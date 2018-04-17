@@ -19,5 +19,8 @@
   <button type="submit">Login</button>
 </form>
 
+<h2>Registrar un nuevo profesor</h2>
+<%@ include file = "FormNuevoProfSec.jsp" %>
+
 </body>
 </html>
