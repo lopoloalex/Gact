@@ -9,7 +9,7 @@ import es.upm.dit.isst.web.dao.SessionFactoryService;
 import es.upm.dit.isst.web.dao.model.Profesor;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 
-public class ProfesorDAOImplementation {
+public class ProfesorDAOImplementation implements ProfesorDAO {
 	
 	private static ProfesorDAOImplementation instancia = null;
 	private ProfesorDAOImplementation () {}
@@ -19,15 +19,15 @@ public class ProfesorDAOImplementation {
 		}
 		return instancia;
 	}
-	
-	public Profesor loginProfessor( String email, String password ) {
+	@Override
+	public Profesor loginProfessor(String email, String password) {
 		Profesor professor = null;
 		Session session = SessionFactoryService.get().openSession();
 
 		try {
 			session.beginTransaction();
 			professor = (Profesor) session
-					.createQuery("select p from Professor p where p.email= :email and p.password = :password")
+					.createQuery("select p from Profesor p where p.email= :email and p.password = :password")
 					.setParameter("email", email)
 					.setParameter("password", password)
 					.uniqueResult();
@@ -42,14 +42,13 @@ public class ProfesorDAOImplementation {
 		}
 		return professor;
 	}
-	
-	public List<Profesor> readAllProfessor( ){
-
+	@Override
+	public List<Profesor> readAllProfessor() {
 		Session session = SessionFactoryService.get().openSession();
 		List<Profesor> profs = new ArrayList<>(); 
 		try {
 			session.beginTransaction();
-			profs.addAll(session.createQuery("select t from profs t").getResultList());
+			profs.addAll(session.createQuery("select t from Profesor t").getResultList());
 			session.getTransaction().commit();
 		}
 		catch (Exception e){
@@ -60,13 +59,12 @@ public class ProfesorDAOImplementation {
 		}
 		return profs;
 	}
-	
-	public void createProfessor(Profesor prof) {
-
+	@Override
+	public void createProfessor(Profesor professor) {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			session.save(prof);
+			session.save(professor);
 			session.getTransaction().commit();
 		}
 		catch (Exception e){
@@ -74,11 +72,10 @@ public class ProfesorDAOImplementation {
 		}
 		finally {
 			session.close();
-		}
+		}		
 	}
-
+	@Override
 	public Profesor readProfessor(String email) {
-
 		Session session = SessionFactoryService.get().openSession();
 		Profesor prof = null;
 		try {
@@ -92,13 +89,12 @@ public class ProfesorDAOImplementation {
 		}
 		return prof;
 	}
-	
-	public void updateProfessor(Profesor prof) {
-
+	@Override
+	public void updateProfessor(Profesor professor) {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(prof);
+			session.saveOrUpdate(professor);
 			session.getTransaction().commit();
 		}
 		catch (Exception e){
@@ -106,15 +102,14 @@ public class ProfesorDAOImplementation {
 		}
 		finally {
 			session.close();
-		}
+		}		
 	}
-	
-	public void deleteProfessor(Profesor prof) {
-
+	@Override
+	public void deleteProfessor(Profesor professor) {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			session.delete(prof);
+			session.delete(professor);
 			session.getTransaction().commit();
 		}
 		catch (Exception e){
@@ -122,8 +117,9 @@ public class ProfesorDAOImplementation {
 		}
 		finally {
 			session.close();
-		}
+		}		
 	}
 	
+
 	
 }

@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
-public class AsignaturaDAOImplementation {
+public class AsignaturaDAOImplementation implements AsignaturaDAO {
 	private static AsignaturaDAOImplementation instancia = null;
 	private AsignaturaDAOImplementation () {}
 	public static AsignaturaDAOImplementation getInstance(){
@@ -17,16 +17,13 @@ public class AsignaturaDAOImplementation {
 		}
 		return instancia;
 	}
-	
-	
-	
-	public List<Asignatura> readAllAsignatura( ){
-
+	@Override
+	public List<Asignatura> readAllAsignatura() {
 		Session session = SessionFactoryService.get().openSession();
 		List<Asignatura> asigs = new ArrayList<>(); 
 		try {
 			session.beginTransaction();
-			asigs.addAll(session.createQuery("select t from asigs t").getResultList());
+			asigs.addAll(session.createQuery("select t from Asignatura t").getResultList());
 			session.getTransaction().commit();
 		}
 		catch (Exception e){
@@ -37,13 +34,12 @@ public class AsignaturaDAOImplementation {
 		}
 		return asigs;
 	}
-	
-	public void createPAsignatura(Asignatura asig) {
-
+	@Override
+	public void createAsignatura(Asignatura asignatura) {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			session.save(asig);
+			session.save(asignatura);
 			session.getTransaction().commit();
 		}
 		catch (Exception e){
@@ -51,11 +47,40 @@ public class AsignaturaDAOImplementation {
 		}
 		finally {
 			session.close();
-		}
+		}		
 	}
+	@Override
+	public void updateAsignatura(Asignatura asignatura) {
+		Session session = SessionFactoryService.get().openSession();
+		try {
+			session.beginTransaction();
+			session.saveOrUpdate(asignatura);
+			session.getTransaction().commit();
+		}
+		catch (Exception e){
 
-	public Asignatura readAsignatura(String asignaturaID) {
+		}
+		finally {
+			session.close();
+		}		
+	}
+	@Override
+	public void deleteAsignatura(Asignatura asignatura) {
+		Session session = SessionFactoryService.get().openSession();
+		try {
+			session.beginTransaction();
+			session.delete(asignatura);
+			session.getTransaction().commit();
+		}
+		catch (Exception e){
 
+		}
+		finally {
+			session.close();
+		}		
+	}
+	@Override
+	public Asignatura readAsignatura(Long asignaturaID) {
 		Session session = SessionFactoryService.get().openSession();
 		Asignatura asig = null;
 		try {
@@ -69,36 +94,6 @@ public class AsignaturaDAOImplementation {
 		}
 		return asig;
 	}
+
 	
-	public void updateAsignatura(Asignatura asig) {
-
-		Session session = SessionFactoryService.get().openSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(asig);
-			session.getTransaction().commit();
-		}
-		catch (Exception e){
-
-		}
-		finally {
-			session.close();
-		}
-	}
-	
-	public void deleteAsignatura(Asignatura asig) {
-
-		Session session = SessionFactoryService.get().openSession();
-		try {
-			session.beginTransaction();
-			session.delete(asig);
-			session.getTransaction().commit();
-		}
-		catch (Exception e){
-
-		}
-		finally {
-			session.close();
-		}
-	}
 }
