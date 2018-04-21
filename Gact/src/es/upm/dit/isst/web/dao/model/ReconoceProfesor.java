@@ -11,11 +11,9 @@ public class ReconoceProfesor implements Serializable {
 	private String email;
 	private Long asignaturaID;
 	
-	public ReconoceProfesor() {
-		
-	}
+	public ReconoceProfesor() {}
 	
-	public ReconoceProfesor (String email, Long asignaturaID) {
+	public ReconoceProfesor(String email, Long asignaturaID) {
 		this.email=email;
 		this.asignaturaID=asignaturaID;
 	}

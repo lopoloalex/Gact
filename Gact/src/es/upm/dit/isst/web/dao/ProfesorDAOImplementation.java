@@ -20,7 +20,7 @@ public class ProfesorDAOImplementation implements ProfesorDAO {
 		return instancia;
 	}
 	@Override
-	public Profesor loginProfessor(String email, String password) {
+	public Profesor loginProfesor(String email, String password) {
 		Profesor professor = null;
 		Session session = SessionFactoryService.get().openSession();
 
@@ -42,6 +42,7 @@ public class ProfesorDAOImplementation implements ProfesorDAO {
 		}
 		return professor;
 	}
+	
 	@Override
 	public List<Profesor> readAllProfessor() {
 		Session session = SessionFactoryService.get().openSession();

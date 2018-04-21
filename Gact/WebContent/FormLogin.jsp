@@ -21,8 +21,6 @@
 </head>
 
 <body>
-	
-
 	<div class="container">
 		<div class="top">
 			<h1 id="title" class="hidden"><span id="logo">Gestión de Actividad Docente </span></h1>
@@ -31,17 +29,18 @@
 			<div class="box-header">
 				<h2>Log In</h2>
 			</div>
-			<label for="username">Nombre de usuario</label>
-			<br/>
-			<input type="text" id="username">
-			<br/>
-			<label for="password">Contraseña</label>
-			<br/>
-			<input type="password" id="password">
-			<br/>
-			<button type="submit" id="login-button" onClick="window.location.href='index.jsp'">Entrar</button>
-			<br/>
-			<a href="#"><p class="small">¿Olvidaste la contraseña?</p></a>
+			<form action="LoginServlet" id="formulario-login">
+				<div class="form-group">
+					<label for="username" class="form-label">Nombre de usuario</label>
+					<input type="text" class="form-control" id="username" name="username">
+				</div>
+				<div class="form-group">
+					<label for="password" class="form-label">Contraseña</label>
+					<input type="password" class="form-control"  id="password" name="password">
+				</div>
+				<button type="submit" id="login-button">Entrar</button>
+			</form>
+			<!--a href="#"><p class="small">¿Olvidaste la contraseña?</p></a-->
 		</div>
 	</div>
 </body>

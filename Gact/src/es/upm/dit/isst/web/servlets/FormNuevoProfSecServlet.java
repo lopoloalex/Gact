@@ -18,15 +18,15 @@ public class FormNuevoProfSecServlet extends HttpServlet{
 		
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		Profesor professor = ProfesorDAOImplementation.getInstance().loginProfessor(email,password);
+		Profesor profesor = ProfesorDAOImplementation.getInstance().loginProfesor(email,password);
 		
-		if (null == professor) {
+		if (profesor == null) {
 			Profesor nuevoProfesor = new Profesor();
 			nuevoProfesor.setEmail(email);
 			nuevoProfesor.setPassword(password);
 			ProfesorDAOImplementation.getInstance().createProfessor(nuevoProfesor);
 		}
-		resp.sendRedirect(req.getContextPath()+"/LoginSecretaria.jsp");	
+		resp.sendRedirect(req.getContextPath()+"/LoginAdmin.jsp");	
 		
 	}
 

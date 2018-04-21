@@ -16,20 +16,23 @@ public class LoginServlet extends HttpServlet {
 	
 	private final String ADMIN_EMAIL = "root";
 	private final String ADMIN_PASSWORD = "root";
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		Profesor profesor = ProfesorDAOImplementation.getInstance().loginProfessor(email, password);
-
+		Profesor profesor = ProfesorDAOImplementation.getInstance().loginProfesor(email, password);
+		
+		System.out.println(password);
+		
 		if( ADMIN_EMAIL.equals(email) && ADMIN_PASSWORD.equals(password) ) {
 
 			req.getSession().setAttribute("adminLogged", true);
-			resp.sendRedirect(req.getContextPath() + "/LoginSecretaria.jsp");
+			resp.sendRedirect(req.getContextPath() + "/LoginAdmin.jsp");
 
-		} else if ( null != profesor ) {
+		} else if ( profesor != null ) {
 
-			req.getSession().setAttribute("professor", profesor);
+			req.getSession().setAttribute("profesor", profesor);
 			resp.sendRedirect(req.getContextPath() + "/LoginProfesor.jsp");
 
 		} else {

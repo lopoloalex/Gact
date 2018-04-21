@@ -5,11 +5,10 @@ import es.upm.dit.isst.web.dao.model.Profesor;
 
 public interface ProfesorDAO {
 	
-	public Profesor loginProfessor( String email, String password );
+	public Profesor loginProfesor( String email, String password );
 	public List<Profesor> readAllProfessor( );
 	public void createProfessor( Profesor professor );
 	public Profesor readProfessor( String email );
 	public void updateProfessor( Profesor professor );
 	public void deleteProfessor( Profesor professor );
 }
-

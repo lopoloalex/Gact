@@ -133,6 +133,18 @@ p.small {
 	opacity: 0.7;
 	transition: 0.5s;
 }
+#formulario-login .form-label {
+	display: block;
+}
+#formulario-login .form-control {
+	display: block;
+	margin: 0 auto;
+}
+#formulario-login .form-group {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
 
 .selected {
 	color: #3c5fe8!important;
