@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.dit.isst.web.dao.DepartamentoDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
@@ -28,7 +29,10 @@ public class LoginServlet extends HttpServlet {
 		if( ADMIN_EMAIL.equals(email) && ADMIN_PASSWORD.equals(password) ) {
 
 			req.getSession().setAttribute("adminLogged", true);
-			resp.sendRedirect(req.getContextPath() + "/LoginAdmin.jsp");
+			
+			req.getSession().setAttribute("departamento_list", DepartamentoDAOImplementation.getInstance().readAllDepartamentos());
+
+			resp.sendRedirect(req.getContextPath() + "/LoginRoot.jsp");
 
 		} else if ( profesor != null ) {
 

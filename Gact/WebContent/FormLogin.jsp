@@ -32,11 +32,11 @@
 			<form action="LoginServlet" id="formulario-login">
 				<div class="form-group">
 					<label for="email" class="form-label">Nombre de usuario</label>
-					<input type="text" class="form-control" id="email" name="email">
+					<input type="text" name="email" placeholder="Email">
 				</div>
 				<div class="form-group">
 					<label for="password" class="form-label">Contraseña</label>
-					<input type="password" class="form-control"  id="password" name="password">
+					<input type="password" name="password" placeholder="Password">
 				</div>
 				<button type="submit" id="login-button">Entrar</button>
 			</form>
