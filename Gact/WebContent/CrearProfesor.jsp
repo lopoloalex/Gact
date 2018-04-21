@@ -12,7 +12,9 @@
 <form action="CrearProfesorServlet">
 	<input type="text" name="departamentoID" placeholder="DepartamentoID">
 	<input type="text" name="name" placeholder="Nombre">
-	<input type="text" name="email" placeholder="email">
+	<input type="text" name="email" placeholder="Email">
+	<input type="password" name="password" placeholder="Password">
+	
 	<button type="submit">Login</button>
 </form>
 
