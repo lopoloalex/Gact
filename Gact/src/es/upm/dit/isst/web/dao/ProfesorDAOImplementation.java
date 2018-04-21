@@ -21,12 +21,12 @@ public class ProfesorDAOImplementation implements ProfesorDAO {
 	}
 	@Override
 	public Profesor loginProfesor(String email, String password) {
-		Profesor professor = null;
+		Profesor profesor = null;
 		Session session = SessionFactoryService.get().openSession();
 
 		try {
 			session.beginTransaction();
-			professor = (Profesor) session
+			profesor = (Profesor) session
 					.createQuery("select p from Profesor p where p.email= :email and p.password = :password")
 					.setParameter("email", email)
 					.setParameter("password", password)
@@ -40,7 +40,7 @@ public class ProfesorDAOImplementation implements ProfesorDAO {
 		finally {
 			session.close();
 		}
-		return professor;
+		return profesor;
 	}
 	
 	@Override

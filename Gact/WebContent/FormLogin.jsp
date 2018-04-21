@@ -31,8 +31,8 @@
 			</div>
 			<form action="LoginServlet" id="formulario-login">
 				<div class="form-group">
-					<label for="username" class="form-label">Nombre de usuario</label>
-					<input type="text" class="form-control" id="username" name="username">
+					<label for="email" class="form-label">Nombre de usuario</label>
+					<input type="text" class="form-control" id="email" name="email">
 				</div>
 				<div class="form-group">
 					<label for="password" class="form-label">Contraseña</label>
