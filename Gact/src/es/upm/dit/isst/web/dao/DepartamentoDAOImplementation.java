@@ -54,7 +54,7 @@ public class DepartamentoDAOImplementation implements DepartamentoDAO {
 	}
 
 	@Override
-	public Departamento readDepartamento(Long departamentoID) {
+	public Departamento readDepartamento(int departamentoID) {
 		Session session = SessionFactoryService.get().openSession();
 		Departamento departamento = null;
 		try {

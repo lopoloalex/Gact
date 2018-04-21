@@ -80,7 +80,7 @@ public class AsignaturaDAOImplementation implements AsignaturaDAO {
 		}		
 	}
 	@Override
-	public Asignatura readAsignatura(Long asignaturaID) {
+	public Asignatura readAsignatura(int asignaturaID) {
 		Session session = SessionFactoryService.get().openSession();
 		Asignatura asig = null;
 		try {

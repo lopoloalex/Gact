@@ -15,8 +15,10 @@ import javax.persistence.OneToMany;
 public class Asignatura implements Serializable {
 
 	@Id
-	private Long asignaturaID;
+	private int asignaturaID;
 	private String titulacion;
+	private String name;
+	private String acronimo;
 	private int nGrupos;
 	private int semestre;
 	private int creditos;
@@ -32,10 +34,10 @@ public class Asignatura implements Serializable {
 	public Asignatura() {
 		this.profesoresAsignatura=new ArrayList<>();
 	}
-	public Long getAsignaturaID() {
+	public int getAsignaturaID() {
 		return asignaturaID;
 	}
-	public void setAsignaturaID(Long asignaturaID) {
+	public void setAsignaturaID(int asignaturaID) {
 		this.asignaturaID = asignaturaID;
 	}
 	public String getTitulacion() {
@@ -97,5 +99,17 @@ public class Asignatura implements Serializable {
 	}
 	public void setProfesoresAsignatura(List<Profesor> profesoresAsignatura) {
 		this.profesoresAsignatura = profesoresAsignatura;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAcronimo() {
+		return acronimo;
+	}
+	public void setAcronimo(String acronimo) {
+		this.acronimo = acronimo;
 	}
 }

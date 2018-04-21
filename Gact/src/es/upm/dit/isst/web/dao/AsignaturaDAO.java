@@ -8,7 +8,7 @@ import es.upm.dit.isst.web.dao.model.Profesor;
 public interface AsignaturaDAO {
 
 	public List<Asignatura> readAllAsignatura( );
-	public Asignatura readAsignatura( Long asignaturaID );
+	public Asignatura readAsignatura( int asignaturaID );
 	public void createAsignatura( Asignatura asignatura );
 	public void updateAsignatura( Asignatura asignatura );
 	public void deleteAsignatura( Asignatura asignatura );

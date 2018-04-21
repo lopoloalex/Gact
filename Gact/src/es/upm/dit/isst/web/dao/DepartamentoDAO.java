@@ -9,7 +9,7 @@ public interface DepartamentoDAO {
 	
 	public List<Departamento> readAllDepartamentos( );
 	public void createDepartamento( Departamento departamento );
-	public Departamento readDepartamento( Long departamentoID );
+	public Departamento readDepartamento( int departamentoID );
 	public void updateDepartamento( Departamento departamento );
 	public void deleteDepartamento( Departamento departamento );
 
