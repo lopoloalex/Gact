@@ -19,5 +19,4 @@
 		<mapping class="es.upm.dit.isst.web.dao.model.Asignatura" />
 		<mapping class="es.upm.dit.isst.web.dao.model.Profesor" />
 	</session-factory>
-</hibernate-configuration>
-                       
+</hibernate-configuration>   

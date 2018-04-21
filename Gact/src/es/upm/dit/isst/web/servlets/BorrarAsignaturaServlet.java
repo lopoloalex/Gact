@@ -22,7 +22,7 @@ import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
-@WebServlet("/CrearAsignaturaServlet")
+@WebServlet("/BorrarAsignaturaServlet")
 public class BorrarAsignaturaServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException { 
