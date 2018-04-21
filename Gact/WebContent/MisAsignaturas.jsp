@@ -10,6 +10,16 @@
                <a class="list-group-item active">Grado en ingeniería de servicios y sistemas de Telecomunicación
                </a>
                <a href="#" class="list-group-item">
+               
+               <c:forEach items="${asignaturas_lista}" var="asignaturas">
+               
+               <a> </a>
+               
+               
+               
+               
+               </c:forEach>
+               
                   <div>
                      <label for="checkbox" onClick="window.location.href='Estadisticas.jsp'">Fundamentos de los sistemas telemáticos</label>
                      <button type="button" class="btn btn-info pull-right" id="login-button" onClick="window.location.href='Formulario.jsp'">Coordinar Asignatura
