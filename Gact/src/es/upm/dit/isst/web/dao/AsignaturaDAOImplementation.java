@@ -2,10 +2,11 @@ package es.upm.dit.isst.web.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.persistence.*;
 import org.hibernate.Session;
 
 import es.upm.dit.isst.web.dao.model.Asignatura;
+
 import es.upm.dit.isst.web.dao.model.Profesor;
 
 public class AsignaturaDAOImplementation implements AsignaturaDAO {
@@ -64,6 +65,7 @@ public class AsignaturaDAOImplementation implements AsignaturaDAO {
 			session.close();
 		}		
 	}
+	
 	@Override
 	public void deleteAsignatura(Asignatura asignatura) {
 		Session session = SessionFactoryService.get().openSession();

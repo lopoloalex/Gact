@@ -1,5 +1,12 @@
 package es.upm.dit.isst.web.servlets;
 
-public class RenderizarAsignaturasServlet {
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+@WebServlet("/RenderizarAsignaturasServlet")
+public class RenderizarAsignaturasServlet extends HttpServlet{
+
+	
+	req.getSession().setAtttribute();
+	req.getSession().setAtttribute();
 
 }

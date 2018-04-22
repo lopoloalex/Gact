@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -34,6 +35,10 @@ public class Asignatura implements Serializable {
 	public Asignatura() {
 		this.profesoresAsignatura=new ArrayList<>();
 	}
+	
+	
+	
+	
 	public int getAsignaturaID() {
 		return asignaturaID;
 	}
@@ -112,4 +117,6 @@ public class Asignatura implements Serializable {
 	public void setAcronimo(String acronimo) {
 		this.acronimo = acronimo;
 	}
+	
+	
 }
