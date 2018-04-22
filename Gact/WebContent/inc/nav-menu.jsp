@@ -23,7 +23,7 @@
         <a class="nav-link js-scroll-trigger" href="Administrar.jsp">Administrar</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="FormLogin.jsp">Salir</a>
+        <%@ include file = "../FormLogout.jsp" %>
       </li>
     </ul>
   </div>
