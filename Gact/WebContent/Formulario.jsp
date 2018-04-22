@@ -17,47 +17,32 @@
 			         <th>Total</th>
 			      </tr>
 			      <tr>
-			         <td contenteditable="true">Alice</td>
-			         <td contenteditable="true">0</td>
-			         <td contenteditable="true">16</td>
-			         <td contenteditable="true">12</td>
-			         <td contenteditable="true">28</td>
-			         <td>
-			            <span class="table-remove glyphicon glyphicon-remove"></span>
-			         </td>
-			         <td>
+
+
+						<c:forEach items="${profesor_list}" var="profesori">
+							<tr>
+								<td>${profesori.name}</td>
+								<td>${profesori.}</td>
+								<td>${departamentoi.responsableEmail}</td>
+
+							</tr>
+						</c:forEach>
+
+
+
+						<td contenteditable="true">Alice</td>
+						<td contenteditable="true">0</td>
+						<td contenteditable="true">16</td>
+						<td contenteditable="true">12</td>
+						<td contenteditable="true">28</td>
+						<td><span class="table-remove glyphicon glyphicon-remove"></span>
+						</td>
+						<td>
 			            <span class="table-up glyphicon glyphicon-arrow-up"></span>
 			            <span class="table-down glyphicon glyphicon-arrow-down"></span>
 			         </td>
 			      </tr>
-			      <tr>
-			         <td contenteditable="true">Bob</td>
-			         <td contenteditable="true">18</td>
-			         <td contenteditable="true">16</td>
-			         <td contenteditable="true">0</td>
-			         <td contenteditable="true">34</td>
-			         <td>
-			            <span class="table-remove glyphicon glyphicon-remove"></span>
-			         </td>
-			         <td>
-			            <span class="table-up glyphicon glyphicon-arrow-up"></span>
-			            <span class="table-down glyphicon glyphicon-arrow-down"></span>
-			         </td>
-			      </tr>
-			      <tr>
-			         <td contenteditable="true">Carol</td>
-			         <td contenteditable="true">18</td>
-			         <td contenteditable="true">16</td>
-			         <td contenteditable="true">24</td>
-			         <td contenteditable="true">58</td>
-			         <td>
-			            <span class="table-remove glyphicon glyphicon-remove"></span>
-			         </td>
-			         <td>
-			            <span class="table-up glyphicon glyphicon-arrow-up"></span>
-			            <span class="table-down glyphicon glyphicon-arrow-down"></span>
-			         </td>
-			      </tr>
+			      
 			   </table>
 		   </div>
 		  
