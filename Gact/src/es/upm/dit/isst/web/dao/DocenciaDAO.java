@@ -9,7 +9,7 @@ import es.upm.dit.isst.web.dao.model.ReconoceProfesor;
 public interface DocenciaDAO {
 	
 	public List<Docencia> readAllDepartamentos( );
-	public void createDepartamento( Docencia docencia );
+	public void createDocencia( Docencia docencia );
 	public Docencia readDocencia(  ReconoceProfesor docencia );
 	public void updateDocencia( Docencia docencia );
 	public void deleteDocencia( Docencia docencia );

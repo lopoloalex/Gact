@@ -17,7 +17,7 @@
         <a class="nav-link js-scroll-trigger" href="Miperfil.jsp">Mi perfil</a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link js-scroll-trigger" href="MisAsignaturas.jsp">Asignaturas</a>
+        <a  class="nav-link js-scroll-trigger" href="RenderizarMisAsignaturasServlet">Asignaturas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link js-scroll-trigger" href="Administrar.jsp">Administrar</a>

@@ -38,7 +38,7 @@ public class DocenciaDAOImplementation implements DocenciaDAO {
 	}
 
 	@Override
-	public void createDepartamento(Docencia docencia) {
+	public void createDocencia(Docencia docencia) {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();

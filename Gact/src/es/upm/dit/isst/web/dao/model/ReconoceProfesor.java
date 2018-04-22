@@ -9,11 +9,11 @@ import javax.persistence.Embeddable;
 public class ReconoceProfesor implements Serializable {
 	
 	private String email;
-	private Long asignaturaID;
+	private int asignaturaID;
 	
 	public ReconoceProfesor() {}
 	
-	public ReconoceProfesor(String email, Long asignaturaID) {
+	public ReconoceProfesor(String email, int asignaturaID) {
 		this.email=email;
 		this.asignaturaID=asignaturaID;
 	}
@@ -22,7 +22,7 @@ public class ReconoceProfesor implements Serializable {
 		return this.email;
 	}
 	
-	public Long getAsignaturaID() {
+	public int getAsignaturaID() {
 		return this.asignaturaID;
 	}
 	
@@ -39,5 +39,13 @@ public class ReconoceProfesor implements Serializable {
     public int hashCode() {
         return Objects.hash(getEmail(), getAsignaturaID());
     }
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setAsignaturaID(int asignaturaID) {
+		this.asignaturaID = asignaturaID;
+	}
 
 }

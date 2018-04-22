@@ -41,7 +41,8 @@ public class CrearAsignaturaServlet extends HttpServlet{
 
 		String creditosS = req.getParameter("Creditos");
 		int creditos = Integer.parseInt(creditosS);
-		String coordinadorEmail = req.getParameter("email");
+		String coordinadorEmail = req.getParameter("Coordinador");
+		
 
 		String departamentoIDS = req.getParameter("DepartamentoID");
 		int departamentoID = Integer.parseInt(departamentoIDS);

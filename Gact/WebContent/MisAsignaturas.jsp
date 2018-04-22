@@ -15,12 +15,17 @@
 						<a href="#" class="list-group-item">
 							<div>
 									<label for="checkbox" name="nombre">${asignaturas.name}</label>
-									<form action="BorrarAsignaturaServlet">	
-									<button class ="btn btn-info pull-right"> BORRAR								
+									
+									<c:if test="${asignaturas.coordinadorEmail == sessionScope.profesor.getEmail()}">
+									
+									<form action="RenderizarFormularioAsignatura">	
+									<button class ="btn btn-info pull-right"> Gestionar								
 									<input type="hidden" class="btn btn-info pull-right"
-									name="asignaturaABorrar" value=${asignaturas.asignaturaID} placeholder="BORRAR">
+									name="asignaturaAGestionar" value=${asignaturas.asignaturaID} >
 									</button>
+									
 									</form>
+									</c:if>
 							</div>
 						</a>
 					</c:forEach>
