@@ -19,6 +19,4 @@ public class RenderizarCrearProfesorServlet extends HttpServlet {
 		resp.sendRedirect(req.getContextPath() + "/CrearProfesor.jsp");
 		
 	}
-	
-
 }
