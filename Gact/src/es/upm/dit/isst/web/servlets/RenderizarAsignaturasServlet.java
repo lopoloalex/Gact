@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServlet;
 @WebServlet("/RenderizarAsignaturasServlet")
 public class RenderizarAsignaturasServlet extends HttpServlet{
 
-	
+	/*
 	req.getSession().setAtttribute();
 	req.getSession().setAtttribute();
-
+*/
 }
