@@ -9,25 +9,27 @@
 					<a class="list-group-item active">Grado en ingeniería de
 						servicios y sistemas de Telecomunicación </a>
 
-				<forms action="/BorrarAsignaturaServlet">
+			
 					<c:forEach items="${asignaturas_lista}" var="asignaturas">
 
 						<a href="#" class="list-group-item">
 							<div>
-								
-								
 									<label for="checkbox" name="nombre">${asignaturas.name}</label>
-									<button type="submit" class="btn btn-info pull-right"
-										name="${asignaturas.asignaturaID}">Borrar asignatura mediante su id</button>
-								</form>
+									<form action="BorrarAsignaturaServlet">	
+									<button class ="btn btn-info pull-right"> BORRAR								
+									<input type="hidden" class="btn btn-info pull-right"
+									name="asignaturaABorrar" value=${asignaturas.asignaturaID} placeholder="BORRAR">
+									</button>
+									</form>
 							</div>
 						</a>
 					</c:forEach>
-
+				
 
 				</ul>
 			</div>
 		</div>
+		
 		<div class="panel panel-info">
 			<ul class="list-group">
 				<a class="list-group-item active"> Master en ingenieria de

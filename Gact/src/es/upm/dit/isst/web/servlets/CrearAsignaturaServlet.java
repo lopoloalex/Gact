@@ -82,7 +82,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		req.getSession().setAttribute("asignaturas_lista", AsignaturaDAOImplementation.getInstance().readAllAsignatura());
 		
 
-		resp.sendRedirect(req.getContextPath()+"/MisAsignaturas.jsp");	
+		resp.sendRedirect(req.getContextPath()+"/Administrar.jsp");	
 		
 		
 		
