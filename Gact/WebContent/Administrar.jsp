@@ -19,10 +19,17 @@
                      <div>
                         <label for="checkbox" name="nombre">${asignaturas.name}</label>
                         <form action="BorrarAsignaturaServlet">	
+                           <button class ="btn btn-info pull-right"> Borrar								
                            <input type="hidden" class="btn btn-info pull-right"
-                              name="asignaturaABorrar" value=${asignaturas.asignaturaID} >
-                           <button class ="btn btn-info pull-right" type="submit"> BORRAR   </button>						
-                              
+                              name="asignaturaABorrar" value=${asignaturas.asignaturaID} placeholder="Borrar">
+                           </button>
+                           </form>
+                           <form action="RenderizarEditarAsignaturaServlet">
+                            <input type="hidden" class="btn btn-info pull-right"
+                              name="asignaturaAEditar" value=${asignaturas.asignaturaID} placeholder="Editar">
+                           <button class ="btn btn-info pull-right" type="submit"> Editar								
+                          
+                           </button>
                         </form>
                      </div>
                   </a>
@@ -30,7 +37,24 @@
             </ul>
          </div>
       </div>
-     
-</section>
+      <div class="panel panel-info">
+         <ul class="list-group">
+            <a class="list-group-item active"> Master en ingenieria de
+            telecomunicacion</a>
+            <a href="#" class="list-group-item">
+               <div>
+                  <label for="checkbox" onClick="window.location.href='index.jsp'">Redes
+                  de Comunicaciones</label>
+               </div>
+            </a>
+            <a href="#" class="list-group-item">
+               <div>
+                  <label for="checkbox" onClick="window.location.href='index.jsp'">Aplicaciones
+                  y servicios</label>
+               </div>
+            </a>
+         </ul>
+      </div>
+   </section>
 </div>
 <%@ include file="inc/footer.jsp"%>
