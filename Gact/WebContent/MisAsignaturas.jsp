@@ -18,7 +18,7 @@
 								
 									<label for="checkbox" name="nombre">${asignaturas.name}</label>
 									<button type="submit" class="btn btn-info pull-right"
-										name="${asignaturas.asignaturaID}">Borrar asignatura</button>
+										name="${asignaturas.asignaturaID}">Borrar asignatura mediante su id</button>
 								</form>
 							</div>
 						</a>
