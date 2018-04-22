@@ -40,7 +40,7 @@
 				</div>
 				<button type="submit" id="login-button">Entrar</button>
 			</form>
-			<!--a href="#"><p class="small">¿Olvidaste la contraseña?</p></a-->
+			<a href="CrearProfesor.jsp"><p class="small">Crear nueva cuenta</p></a>
 		</div>
 	</div>
 </body>
