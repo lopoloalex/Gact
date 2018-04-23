@@ -31,8 +31,8 @@ public class Asignatura implements Serializable {
 	private List<Docencia> docencias;
 	
 	public Asignatura() {
-		this.profesoresAsignatura=new ArrayList<>();
-		this.docencias = new ArrayList<>();
+		this.profesoresAsignatura=new ArrayList<Profesor>();
+		this.docencias = new ArrayList<Docencia>();
 	}
 	
 	public List<Docencia> getDocencias() {

@@ -48,6 +48,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		int departamentoID = Integer.parseInt(departamentoIDS);
 
 		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoID);
+		Profesor coordinador = ProfesorDAOImplementation.getInstance().readProfessor(coordinadorEmail);
 
 
 		String horasTotalesAS = req.getParameter("HorasA");
@@ -59,8 +60,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 
 
 
-		//Asignatura asignatura = AsignaturaDAOImplementation.getInstance().loginProfessor(email,password);
-		//comprobar la existencia de codigo, nombre, acronimo....
+
 
 		Asignatura nuevaAsignatura = new Asignatura();
 		nuevaAsignatura.setAsignaturaID(asignaturaID);
@@ -73,10 +73,23 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		nuevaAsignatura.setHorasTotalesB(horasTotalesB);
 		nuevaAsignatura.setHorasTotalesC(horasTotalesC);
 		nuevaAsignatura.setnGrupos(nGrupos);
-		//nuevaAsignatura.setProfesoresAsignatura(profesoresAsignatura);
 		nuevaAsignatura.setSemestre(semestre);
 		nuevaAsignatura.setTitulacion(titulacion);
+		
+		
+		List<Asignatura> asignaturas = coordinador.getAsignaturasImpartidas();
+		asignaturas.add(nuevaAsignatura);
+		coordinador.setAsignaturasImpartidas(asignaturas);
+		System.out.println(asignaturas);
+		
+		List<Profesor> asignaturaProfes = nuevaAsignatura.getProfesoresAsignatura();
+		asignaturaProfes.add(coordinador);
+		nuevaAsignatura.setProfesoresAsignatura(asignaturaProfes);
+		
+		System.out.println(asignaturaProfes);
 
+		
+		
 		departamento.getAsignaturasDepartamento().add(nuevaAsignatura);
 		
 		AsignaturaDAOImplementation.getInstance().createAsignatura(nuevaAsignatura);

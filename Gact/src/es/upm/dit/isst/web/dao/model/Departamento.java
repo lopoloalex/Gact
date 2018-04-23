@@ -22,8 +22,8 @@ public class Departamento implements Serializable {
 	private List<Asignatura> asignaturasDepartamento;
 	
 	public Departamento() {
-		this.asignaturasDepartamento=new ArrayList<>();
-		this.profesoresDepartamento=new ArrayList<>();
+		this.asignaturasDepartamento=new ArrayList<Asignatura>();
+		this.profesoresDepartamento=new ArrayList<Profesor>();
 	}
 	public int getDepartamentoID() {
 		return departamentoID;

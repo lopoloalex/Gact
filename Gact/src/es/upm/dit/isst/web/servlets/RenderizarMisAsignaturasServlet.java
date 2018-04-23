@@ -20,6 +20,7 @@ public class RenderizarMisAsignaturasServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Profesor pro= (Profesor) req.getSession().getAttribute("profesor");
+		pro.getAsignaturasImpartidas();
 		
 		List<Asignatura> asig = AsignaturaDAOImplementation.getInstance().readAllAsignatura();
 		

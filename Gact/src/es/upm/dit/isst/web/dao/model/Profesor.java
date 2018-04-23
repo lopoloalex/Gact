@@ -27,8 +27,8 @@ public class Profesor implements Serializable{
 	private List<Docencia> docenciasImpartidas;
 	
 	public Profesor () {
-		this.asignaturasImpartidas=new ArrayList<>();
-		this.docenciasImpartidas = new ArrayList<>();
+		this.asignaturasImpartidas=new ArrayList<Asignatura>();
+		this.docenciasImpartidas = new ArrayList<Docencia>();
 	}
 	public String getEmail() {
 		return email;
