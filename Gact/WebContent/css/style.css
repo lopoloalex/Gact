@@ -1,39 +1,10 @@
 body {
-	background: url("../images/photo_bg.jpg") no-repeat center center fixed;
 	background-size: cover;
 	font-size: 16px;
 	font-family: 'Lato', sans-serif;
 	font-weight: 300;
 	margin: 0;
 	color: #666;
-}
-
-/* Typography */
-h1#title {
-	font-family: 'Roboto Slab', serif;
-	font-weight: 300;
-	font-size: 3.2em;
-	color: white;
-	text-shadow: 0 0 10px rgba(0,0,0,0.8);
-	margin: 0 auto;
-	padding-top: 100px;
-	max-width: 1000px;
-	text-align: center;
-	position: relative;
-	top: 0px;
-}
-
-h1#title span span {
-	font-weight: 400;
-}
-
-h2 {
-	text-transform: uppercase;
-	color: white;
-	font-weight: 400;
-	letter-spacing: 1px;
-	font-size: 1.4em;
-	line-height: 2.8em;
 }
 
 a {
@@ -48,6 +19,22 @@ a:hover {
 p.small {
 	font-size: 0.8em;
 	margin: 20px 0 0;
+}
+#sidenav .navbar-nav .nav-item a.nav-link {
+	text-align: left !important;
+    padding-left: 25px !important;
+}
+
+div.panel-info {
+	margin-bottom: 30px;
+}
+div.panel-info div.title-grade {
+	padding: 10px 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #097bff;
+    border-radius: 3px 3px 0 0;
 }
 
 

@@ -11,49 +11,35 @@
             nueva asignatura</button>
          </h2>
          <div class="panel panel-info">
-            <ul class="list-group">
-               <a class="list-group-item active">Grado en ingeniería de
-               servicios y sistemas de Telecomunicación </a>
+               <div class="title-grade">Grado en ingeniería de
+               servicios y sistemas de Telecomunicación </div>
+               <c:if test="${ asignaturas_lista == null}">
+			       <div class="list-group-item">
+		                  <label>No existen asignaturas de Grado</label>
+		           </div>
+		      </c:if>
                <c:forEach items="${asignaturas_lista}" var="asignaturas">
-                  <a href="#" class="list-group-item">
-                     <div>
-                        <label for="checkbox" name="nombre">${asignaturas.name}</label>
-                        <form action="BorrarAsignaturaServlet">	
-                           <button class ="btn btn-info pull-right"> Borrar								
-                           <input type="hidden" class="btn btn-info pull-right"
-                              name="asignaturaABorrar" value=${asignaturas.asignaturaID} placeholder="Borrar">
-                           </button>
+                        <a href="#" class="list-group-item"><label for="checkbox" name="nombre">${asignaturas.name}</label></a>
+                        <form action="BorrarAsignaturaServlet">					
+                           <input type="hidden" class="btn btn-info pull-right" name="asignaturaABorrar" value="${asignaturas.asignaturaID}" placeholder="Borrar">
+                               <button class ="btn btn-info pull-right"> Borrar</button>
                            </form>
                            <form action="RenderizarEditarAsignaturaServlet">
                             <input type="hidden" class="btn btn-info pull-right"
-                              name="asignaturaAEditar" value=${asignaturas.asignaturaID} placeholder="Editar">
+                              name="asignaturaAEditar" value="${asignaturas.asignaturaID}" placeholder="Editar">
                            <button class ="btn btn-info pull-right" type="submit"> Editar								
                           
                            </button>
                         </form>
-                     </div>
-                  </a>
                </c:forEach>
-            </ul>
          </div>
       </div>
       <div class="panel panel-info">
-         <ul class="list-group">
-            <a class="list-group-item active"> Master en ingenieria de
-            telecomunicacion</a>
-            <a href="#" class="list-group-item">
-               <div>
-                  <label for="checkbox" onClick="window.location.href='index.jsp'">Redes
-                  de Comunicaciones</label>
-               </div>
-            </a>
-            <a href="#" class="list-group-item">
-               <div>
-                  <label for="checkbox" onClick="window.location.href='index.jsp'">Aplicaciones
-                  y servicios</label>
-               </div>
-            </a>
-         </ul>
+            <div class="title-grade"> Master en ingenieria de
+            telecomunicacion</div>
+            <div class="list-group-item">
+                  <label>No existen asignaturas de máster</label>
+            </div>
       </div>
    </section>
 </div>
