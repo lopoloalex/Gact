@@ -5,28 +5,22 @@
 		<div class="my-auto">
 			<h2 class="mb-0">Mis asignaturas</h2>
 			<div class="panel panel-info">
-				<ul class="list-group">
-					<a class="list-group-item active">Grado en ingeniería de
+			<a class="list-group-item active">Grado en ingeniería de
 						servicios y sistemas de Telecomunicación </a>
-
-			
+				<ul class="list-group">
 					<c:forEach items="${asignaturas_lista}" var="asignaturas">
 
 						<a href="#" class="list-group-item">
-							<div>
 									<label for="checkbox" name="nombre">${asignaturas.name}</label>
 									
 									<c:if test="${asignaturas.coordinadorEmail == sessionScope.profesor.getEmail()}">
 									
 									<form action="RenderizarFormularioAsignatura">	
-									<button class ="btn btn-info pull-right"> Gestionar								
-									<input type="hidden" class="btn btn-info pull-right"
-									name="asignaturaAGestionar" value=${asignaturas.asignaturaID} >
-									</button>
-									
+										<input type="hidden" class="btn btn-info pull-right"
+										name="asignaturaAGestionar" value="${asignaturas.asignaturaID}" >
+										<button class ="btn btn-info pull-right" type="submit"> Gestionar</button>
 									</form>
 									</c:if>
-							</div>
 						</a>
 					</c:forEach>
 				
@@ -53,6 +47,6 @@
 				</a>
 			</ul>
 		</div>
-</div>
 </section>
+</div>
 <%@ include file="inc/footer.jsp"%>

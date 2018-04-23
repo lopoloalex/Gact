@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Profesor implements Serializable{
@@ -22,10 +23,12 @@ public class Profesor implements Serializable{
 	private List<Asignatura> asignaturasImpartidas;
 	@ManyToOne
 	private Departamento departamento;
+	@OneToMany (fetch=FetchType.EAGER,mappedBy="profesorID",cascade= {CascadeType.PERSIST,CascadeType.MERGE})
+	private List<Docencia> docenciasImpartidas;
 	
 	public Profesor () {
 		this.asignaturasImpartidas=new ArrayList<>();
-		
+		this.docenciasImpartidas = new ArrayList<>();
 	}
 	public String getEmail() {
 		return email;
@@ -56,6 +59,12 @@ public class Profesor implements Serializable{
 	}
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
+	}
+	public List<Docencia> getDocenciasImpartidas() {
+		return docenciasImpartidas;
+	}
+	public void setDocenciasImpartidas(List<Docencia> docenciasImpartidas) {
+		this.docenciasImpartidas = docenciasImpartidas;
 	}
 
 }

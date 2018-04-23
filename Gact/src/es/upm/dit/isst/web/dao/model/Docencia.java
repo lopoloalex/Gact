@@ -2,9 +2,8 @@ package es.upm.dit.isst.web.dao.model;
 
 import java.io.Serializable;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
 public class Docencia implements Serializable {
@@ -14,6 +13,10 @@ public class Docencia implements Serializable {
 	private double horasA;
 	private double horasB;
 	private double horasC;
+	@ManyToOne
+	private Profesor profesorID;
+	@ManyToOne
+	private Asignatura asignaturaID;
 	
 	public Docencia() {
 		
@@ -50,7 +53,19 @@ public class Docencia implements Serializable {
 	public void setHorasC(double horasC) {
 		this.horasC = horasC;
 	}
+	public Profesor getProfesorID() {
+		return profesorID;
+	}
 
+	public void setProfesorID(Profesor profesorID) {
+		this.profesorID = profesorID;
+	}
 
+	public Asignatura getAsignaturaID() {
+		return asignaturaID;
+	}
 
+	public void setAsignaturaID(Asignatura asignaturaID) {
+		this.asignaturaID = asignaturaID;
+	}
 }

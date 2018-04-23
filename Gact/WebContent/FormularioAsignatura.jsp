@@ -20,16 +20,23 @@
 			         <th>Horas(A)</th>
 			         <th>Horas(B)</th>
 			         <th>Horas(C)</th>
+			         <th></th>
 			      </tr>
 			      
 
 
 				 <c:forEach items="${docencia_list}" var="docenciai">
 					<tr>
-						<td>${docenciai.docencia.email}</td>
+						<td>${docenciai.getProfesorID().name}</td>
 						<td>${docenciai.getHorasA()}</td>
-						<td>${docenciai.horasB}</td>
-						<td>${docenciai.horasC}</td>								
+						<td>${docenciai.getHorasB()}</td>
+						<td>${docenciai.getHorasC()}</td>
+						<td>
+							<form action="RenderizarEditarHorariosProfServlet">
+								<input type="hidden" name="docenciaID" value="${docenciai.getDocencia()}" >
+								<input type="submit" class="btn btn-success" value="Editar">
+							</form>
+						</td>
 					</tr>
 				 </c:forEach>
 			   </table>

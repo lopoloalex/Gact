@@ -25,6 +25,8 @@ public class LoginFilter implements Filter {
         HttpSession session = request.getSession();
         String requestPath = request.getRequestURI();
         
+        System.out.println(requestPath);
+        
         String[] validNonAuthenticationUrls = { "FormLogin.jsp", "CrearProfesor.jsp",".css", ".js",".jpg",".png","Servlet" };
         
         if(session == null || (session.getAttribute("profesor") == null && session.getAttribute("adminLogged") == null)) {
@@ -92,10 +94,12 @@ public class LoginFilter implements Filter {
         	// El usuario está logeado
         	
         	// Si es root, se permite acceso a todas las páginas
-            if(session.getAttribute("adminLogged") !=null && (boolean)(session.getAttribute("adminLogged")) == true) {           	
+            if(session.getAttribute("adminLogged") != null && (boolean)(session.getAttribute("adminLogged")) == true) {
+            	System.out.println("Es Root");
             	return true;
             // Si es Responsable del departamento
-            } else if(session.getAttribute("profesor") != null && (boolean)(session.getAttribute("isResponsable")) == true) {
+            } else if(session.getAttribute("profesor") != null && session.getAttribute("isResponsable") != null && (boolean)(session.getAttribute("isResponsable")) == true) {
+            	System.out.println("Es Responsable");
             	for(String validUrl : ResponsablePages) {
                     if (url.endsWith(validUrl)) {
                         return true;
@@ -106,8 +110,10 @@ public class LoginFilter implements Filter {
                         return false;
                     }
                 }
+            	return true;
             // Si es Coordinador de alguna asignatura
-            } else if(session.getAttribute("profesor") != null && (boolean)(session.getAttribute("isCoordinador")) == true) {
+            } else if(session.getAttribute("profesor") != null && session.getAttribute("isCoordinador") != null  && (boolean)(session.getAttribute("isCoordinador")) == true) {
+            	System.out.println("Es Coordinador");
             	for(String validUrl : CoordinadorPages) {
                     if (url.endsWith(validUrl)) {
                         return true;
@@ -123,8 +129,10 @@ public class LoginFilter implements Filter {
                         return false;
                     }
                 }
+            	return true;
             // Si es Profesor solamente
             } else {
+            	System.out.println("Es profesor");
             	for(String validUrl : CoordinadorPages) {
                     if (url.endsWith(validUrl)) {
                     	return false;
@@ -143,13 +151,5 @@ public class LoginFilter implements Filter {
             	return true;
             }
         }
-        
-        // Paginas accesibles sin logear
-        for(String validUrl : validNonAuthenticationUrls) {
-            if (url.endsWith(validUrl)) {
-                return true;
-            }
-        }
-    	return false;
     }
 }

@@ -26,7 +26,7 @@ public class RenderizarFormularioAsignatura extends HttpServlet {
 		int id = Integer.parseInt(gestionar);
 		Asignatura asignatura = new Asignatura();
 		AsignaturaDAOImplementation asignaturaDAO = AsignaturaDAOImplementation.getInstance();
-		asignatura=asignaturaDAO.readAsignatura(id);
+		asignatura = asignaturaDAO.readAsignatura(id);
 		
 		
 		List<Profesor> profesores = asignatura.getProfesoresAsignatura();
@@ -38,7 +38,7 @@ public class RenderizarFormularioAsignatura extends HttpServlet {
 		
 		for(Profesor p :profesores) {
 			String reconoce = gestionar+p.getEmail();
-
+			System.out.println(DocenciaDAOImplementation.getInstance().readDocencia(reconoce));
 			docencia_list.add(DocenciaDAOImplementation.getInstance().readDocencia(reconoce));
 		}
 		

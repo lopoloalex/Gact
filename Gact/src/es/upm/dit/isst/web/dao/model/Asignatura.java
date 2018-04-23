@@ -6,11 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Asignatura implements Serializable {
@@ -31,14 +27,21 @@ public class Asignatura implements Serializable {
 	private double horasTotalesC;
 	@ManyToMany (fetch=FetchType.EAGER,mappedBy="asignaturasImpartidas",cascade= {CascadeType.PERSIST,CascadeType.MERGE})
 	private List<Profesor> profesoresAsignatura;
+	@OneToMany (fetch=FetchType.EAGER,mappedBy="asignaturaID",cascade= {CascadeType.PERSIST,CascadeType.MERGE})
+	private List<Docencia> docencias;
 	
 	public Asignatura() {
 		this.profesoresAsignatura=new ArrayList<>();
+		this.docencias = new ArrayList<>();
 	}
 	
-	
-	
-	
+	public List<Docencia> getDocencias() {
+		return docencias;
+	}
+	public void setDocencias(List<Docencia> docencias) {
+		this.docencias = docencias;
+	}
+
 	public int getAsignaturaID() {
 		return asignaturaID;
 	}
