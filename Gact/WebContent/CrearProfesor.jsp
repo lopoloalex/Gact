@@ -1,42 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<form action="CrearProfesorServlet">
-	<input type="text" name="departamentoID" placeholder="DepartamentoID">
-	<input type="text" name="name" placeholder="Nombre">
-	<input type="text" name="email" placeholder="Email">
-	<input type="password" name="password" placeholder="Password">
-	
-	<button type="submit">Login</button>
-</form>
+<%@ include file="inc/head.jsp"%>
+<%@ include file="inc/nav-menu.jsp"%>
+<div class="container-fluid p-0">
+	<section class="resume-section p-3 p-lg-5  d-column" id="about">
+		<div class="my-auto">
+			<h2 class="mb-0">Departamentos creados</h2>
+
+		</div>
+
+		<form action="CrearProfesorServlet">
+			<input type="text" name="departamentoID" placeholder="DepartamentoID">
+			<input type="text" name="name" placeholder="Nombre"> <input
+				type="text" name="email" placeholder="Email"> <input
+				type="password" name="password" placeholder="Password">
+
+			<button type="submit">Login</button>
+		</form>
+
+		<div id="table">
+			<span class="table-add glyphicon glyphicon-plus"></span>
+			<table class="table">
+
+				<tr>
+					<th>Departamento</th>
+					<th>Nombre</th>
+					<th>Email</th>
+
+				</tr>
+
+				<c:forEach items="${profesor_list}" var="profesori">
+					<tr>
+						<td>${profesori.departamento.nombre}</td>
+						<td>${profesori.name}</td>
+						<td>${profesori.email}</td>
+
+					</tr>
+				</c:forEach>
+			</table>
 
 
-<table border="1">
-<tr>
-<th>Departamento</th>
-<th>Nombre</th>
-<th>Email</th>
 
-</tr>
+		</div>
+	</section>
+</div>
 
-<c:forEach items="${profesor_list}" var="profesori">
-<tr>
-<td>${profesori.departamento.nombre}</td>
-<td>${profesori.name}</td>
-<td>${profesori.email}</td>
-
-</tr></c:forEach></table>
-
-
-
-
-</body>
-</html>
+<%@ include file="inc/footer.jsp"%>

@@ -4,7 +4,7 @@
 	<section class="resume-section p-3 p-lg-5  d-column" id="about">
 		<div class="my-auto">
 			<h2 class="mb-0">Departamentos creados</h2>
-			<p>En construcción</p>
+			
 		</div>
 
 	<form action="LoginRootServlet">

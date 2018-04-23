@@ -23,9 +23,9 @@
       </div>
      
       <div class="form-group">
-         <label  class="col-lg-2 control-label">Código</label>
+         <label  class="col-lg-2 control-label">Código: ${asignatura.asignaturaID}</label>
          <div class="col-lg-10">
-            <input type="number" name="Codigo" class="form-control" placeholder="Código" value="${asignatura.asignaturaID}">
+            <input type="hidden" name="Codigo" class="form-control" placeholder="Código" value="${asignatura.asignaturaID}">
          </div>
       </div>
       <div class="form-group">
