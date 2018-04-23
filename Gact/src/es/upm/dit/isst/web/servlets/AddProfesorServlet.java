@@ -72,6 +72,8 @@ public class AddProfesorServlet extends HttpServlet{
 		System.out.println(DocenciaDAOImplementation.getInstance().readDocencia(claveDocencia));
 		
 		req.getSession().setAttribute("asignatura", asignatura);
+		req.getSession().setAttribute("asignaturaAGestionar", asignatura);
+
 
 		resp.sendRedirect(req.getContextPath()+"/AddProfesor.jsp");	
 		

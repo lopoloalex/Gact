@@ -44,7 +44,7 @@
          <button type="submit" class="btn btn-success col-lg-2"> Guardar </button>
       </form>
       <form action="RenderizarFormularioAsignatura">
-      	<input type="hidden" name="asignaturaAGestionar" value="${docencia.asignaturaID.getAsignaturaID()}">
+      	<input type="hidden" name="asignaturaAGestionar" value="${asignatura.asignaturaID}">
       	<input type="submit" class="btn btn-active" value="Volver">
       </form>
    </section>
