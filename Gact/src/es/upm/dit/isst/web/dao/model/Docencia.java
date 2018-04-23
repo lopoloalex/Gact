@@ -4,12 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Docencia implements Serializable {
 
-	@EmbeddedId
-	private ReconoceProfesor docencia;
+	@Id
+	private String docencia;
 	private double horasA;
 	private double horasB;
 	private double horasC;
@@ -18,11 +19,11 @@ public class Docencia implements Serializable {
 		
 	}
 
-	public ReconoceProfesor getDocencia() {
+	public String getDocencia() {
 		return docencia;
 	}
 
-	public void setDocencia(ReconoceProfesor docencia) {
+	public void setDocencia(String docencia) {
 		this.docencia = docencia;
 	}
 

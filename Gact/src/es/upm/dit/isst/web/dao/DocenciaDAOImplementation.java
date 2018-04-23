@@ -6,7 +6,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import es.upm.dit.isst.web.dao.model.Docencia;
-import es.upm.dit.isst.web.dao.model.ReconoceProfesor;
 
 public class DocenciaDAOImplementation implements DocenciaDAO {
 	
@@ -20,7 +19,7 @@ public class DocenciaDAOImplementation implements DocenciaDAO {
 	}
 
 	@Override
-	public List<Docencia> readAllDepartamentos() {
+	public List<Docencia> readAllDocencia() {
 		Session session = SessionFactoryService.get().openSession();
 		List<Docencia> docencia = new ArrayList<>(); 
 		try {
@@ -54,7 +53,7 @@ public class DocenciaDAOImplementation implements DocenciaDAO {
 	}
 
 	@Override
-	public Docencia readDocencia(ReconoceProfesor docencia) {
+	public Docencia readDocencia(String docencia) {
 		Session session = SessionFactoryService.get().openSession();
 		Docencia docen = null;
 		try {

@@ -16,7 +16,6 @@ import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Docencia;
 import es.upm.dit.isst.web.dao.model.Profesor;
-import es.upm.dit.isst.web.dao.model.ReconoceProfesor;
 
 @WebServlet("/RenderizarFormularioAsignatura")
 public class RenderizarFormularioAsignatura extends HttpServlet {
@@ -34,16 +33,16 @@ public class RenderizarFormularioAsignatura extends HttpServlet {
 		//req.getSession().setAttribute("profesor_list", profesores);
 		
 		List<Docencia> docencia_list= new ArrayList<Docencia>();
-		ReconoceProfesor reconoce = new ReconoceProfesor();
-		reconoce.setAsignaturaID(id);
+		
 		
 		
 		for(Profesor p :profesores) {
-			reconoce.setEmail(p.getEmail());
+			String reconoce = gestionar+p.getEmail();
+
 			docencia_list.add(DocenciaDAOImplementation.getInstance().readDocencia(reconoce));
 		}
 		
-		
+		System.out.println(docencia_list);
 		req.getSession().setAttribute("docencia_list", docencia_list);
 		
 		

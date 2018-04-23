@@ -92,7 +92,7 @@ public class LoginFilter implements Filter {
         	// El usuario está logeado
         	
         	// Si es root, se permite acceso a todas las páginas
-            if((boolean)(session.getAttribute("adminLogged")) == true) {
+            if(session.getAttribute("adminLogged") !=null && (boolean)(session.getAttribute("adminLogged")) == true) {           	
             	return true;
             // Si es Responsable del departamento
             } else if(session.getAttribute("profesor") != null && (boolean)(session.getAttribute("isResponsable")) == true) {

@@ -15,7 +15,6 @@ import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Docencia;
 import es.upm.dit.isst.web.dao.model.Profesor;
-import es.upm.dit.isst.web.dao.model.ReconoceProfesor;
 
 
 @WebServlet("/AddProfesorServlet")
@@ -51,14 +50,14 @@ public class AddProfesorServlet extends HttpServlet{
 		ProfesorDAOImplementation.getInstance().updateProfessor(profesor);
 		AsignaturaDAOImplementation.getInstance().updateAsignatura(asignatura);
 		
-		ReconoceProfesor reconoce = new ReconoceProfesor();
 		Docencia docencia = new Docencia();
 		
-		reconoce.setAsignaturaID(id);
-		reconoce.setEmail(email);
+
+		
+		String claveDocencia = asig+email;
 		
 		
-		docencia.setDocencia(reconoce);
+		docencia.setDocencia(claveDocencia);
 		docencia.setHorasA(A);
 		docencia.setHorasB(B);
 		docencia.setHorasC(C);
@@ -68,7 +67,7 @@ public class AddProfesorServlet extends HttpServlet{
 
 		
 		DocenciaDAOImplementation.getInstance().createDocencia(docencia);
-		
+		System.out.println(DocenciaDAOImplementation.getInstance().readDocencia(claveDocencia));
 		
 		req.getSession().setAttribute("asignatura", asignatura);
 
