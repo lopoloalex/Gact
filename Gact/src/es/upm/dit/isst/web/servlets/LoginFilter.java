@@ -53,12 +53,14 @@ public class LoginFilter implements Filter {
             	// El profesor es responsable del departamento
             	if(profesorLogged.getEmail() == departamento.getResponsableEmail()) {
             		session.setAttribute("isResponsable", true);
+            		session.setAttribute("isCoordinador", false);
             	}
             	
             	// El profesor es coordinador de asignatura
             	for(Asignatura asignatura : asignaturas) {
             		if(profesorLogged.getEmail() == asignatura.getCoordinadorEmail()) {
             			session.setAttribute("isCoordinador", true);
+            			session.setAttribute("isResponsable", false);
             			break;
             		}
             	}

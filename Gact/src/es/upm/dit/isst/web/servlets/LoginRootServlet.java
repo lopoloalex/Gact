@@ -31,7 +31,7 @@ public class LoginRootServlet extends HttpServlet {
 		DepartamentoDAOImplementation.getInstance().createDepartamento(nuevoDepartamento);
 		req.getSession().setAttribute("departamento_list", DepartamentoDAOImplementation.getInstance().readAllDepartamentos());
 
-		resp.sendRedirect(req.getContextPath() + "/LoginRoot.jsp");
+		resp.sendRedirect(req.getContextPath() + "/CrearDepartamento.jsp");
 			
 		
 	}

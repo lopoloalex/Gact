@@ -29,13 +29,24 @@ public class LoginServlet extends HttpServlet {
 		if( ADMIN_EMAIL.equals(email) && ADMIN_PASSWORD.equals(password) ) {
 
 			req.getSession().setAttribute("adminLogged", true);
+			req.getSession().setAttribute("isResponsable", false);
+			req.getSession().setAttribute("isCoordinador", false);
 			
 			req.getSession().setAttribute("departamento_list", DepartamentoDAOImplementation.getInstance().readAllDepartamentos());
 
-			resp.sendRedirect(req.getContextPath() + "/LoginRoot.jsp");
+			resp.sendRedirect(req.getContextPath() + "/CrearDepartamento.jsp");
 
 		} else if ( profesor != null ) {
-
+			req.getSession().setAttribute("adminLogged", false);
+			
+			if(req.getSession().getAttribute("isResponsable") == null) {
+				req.getSession().setAttribute("isResponsable", false);
+			}
+			
+			if(req.getSession().getAttribute("isCoordinador") == null) {
+				req.getSession().setAttribute("isCoordinador", false);
+			}
+			req.getSession().setAttribute("adminLogged", false);
 			req.getSession().setAttribute("profesor", profesor);
 			resp.sendRedirect(req.getContextPath() + "/LoginProfesor.jsp");
 

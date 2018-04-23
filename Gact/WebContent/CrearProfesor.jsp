@@ -3,7 +3,7 @@
 <div class="container-fluid p-0">
 	<section class="resume-section p-3 p-lg-5  d-column" id="about">
 		<div class="my-auto">
-			<h2 class="mb-0">Departamentos creados</h2>
+			<h2 class="mb-0">Crear nuevo profesor</h2>
 
 		</div>
 

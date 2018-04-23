@@ -16,12 +16,24 @@
       <li class="nav-item">
         <a class="nav-link js-scroll-trigger" href="Miperfil.jsp">Mi perfil</a>
       </li>
-      <li class="nav-item">
-        <a  class="nav-link js-scroll-trigger" href="RenderizarMisAsignaturasServlet">Asignaturas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="Administrar.jsp">Administrar</a>
-      </li>
+      <c:if test="${ !sessionScope.adminLogged }">
+	      <li class="nav-item">
+	        <a  class="nav-link js-scroll-trigger" href="RenderizarMisAsignaturasServlet">Asignaturas</a>
+	      </li>
+      </c:if>
+      <c:if test="${sessionScope.isResponsable || sessionScope.isCoordinador || sessionScope.adminLogged}">
+	      <li class="nav-item">
+	        <a class="nav-link js-scroll-trigger" href="Administrar.jsp">Administrar</a>
+	      </li>
+	      <li class="nav-item">
+	      	 <a class="nav-link js-scroll-trigger" href="RenderizarCrearProfesorServlet">Nuevo Profesor</a>
+	      </li>
+      </c:if>
+      <c:if test="${ sessionScope.adminLogged }">
+	      <li class="nav-item">
+	        <a  class="nav-link js-scroll-trigger" href="CrearDepartamento.jsp">Nuevo Departamento</a>
+	      </li>
+      </c:if>
       <li class="nav-item">
         <%@ include file = "../FormLogout.jsp" %>
       </li>

@@ -3,7 +3,7 @@
 <div class="container-fluid p-0">
 	<section class="resume-section p-3 p-lg-5  d-column" id="about">
 		<div class="my-auto">
-			<h2 class="mb-0">Departamentos creados</h2>
+			<h2 class="mb-0">Departamentos</h2>
 			
 		</div>
 
@@ -21,22 +21,18 @@
 				<th>DepartamentoID</th>
 				<th>Nombre</th>
 				<th>CoordinadorEmail</th>
-
 			</tr>
+			<c:forEach items="${departamento_list}" var="departamentoi">
+				<tr>
+					<td>${departamentoi.departamentoID}</td>
+					<td>${departamentoi.nombre}</td>
+					<td>${departamentoi.responsableEmail}</td>
 
-			<tr>
-				<c:forEach items="${departamento_list}" var="departamentoi">
-					<tr>
-						<td>${departamentoi.departamentoID}</td>
-						<td>${departamentoi.nombre}</td>
-						<td>${departamentoi.responsableEmail}</td>
+				</tr>
 
-					</tr>
-
-				</c:forEach>
+			</c:forEach>
 		</table>
-		</div>
-		</section>
 	</div>
-
-	<%@ include file="inc/footer.jsp"%>
+</section>
+</div>
+<%@ include file="inc/footer.jsp"%>

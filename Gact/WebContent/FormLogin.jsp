@@ -40,7 +40,6 @@
 				</div>
 				<button type="submit" id="login-button">Entrar</button>
 			</form>
-			<a href="RenderizarCrearProfesorServlet"><p class="small">Crear nueva cuenta</p></a>
 		</div>
 	</div>
 </body>
