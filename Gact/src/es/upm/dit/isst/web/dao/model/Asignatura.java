@@ -18,16 +18,16 @@ public class Asignatura implements Serializable {
 	private String acronimo;
 	private int nGrupos;
 	private int semestre;
-	private int creditos;
+	private double creditos;
 	private String coordinadorEmail;
 	@ManyToOne
 	private Departamento departamento;
 	private double horasTotalesA;
 	private double horasTotalesB;
 	private double horasTotalesC;
-	@ManyToMany (fetch=FetchType.EAGER,mappedBy="asignaturasImpartidas",cascade= {CascadeType.PERSIST,CascadeType.MERGE})
+	@ManyToMany (fetch=FetchType.EAGER,mappedBy="asignaturasImpartidas",cascade= {CascadeType.MERGE,CascadeType.PERSIST})
 	private List<Profesor> profesoresAsignatura;
-	@OneToMany (fetch=FetchType.EAGER,mappedBy="asignaturaID",cascade= {CascadeType.PERSIST,CascadeType.MERGE})
+	@OneToMany (fetch=FetchType.EAGER,mappedBy="asignaturaID")
 	private List<Docencia> docencias;
 	
 	public Asignatura() {
@@ -66,10 +66,10 @@ public class Asignatura implements Serializable {
 	public void setSemestre(int semestre) {
 		this.semestre = semestre;
 	}
-	public int getCreditos() {
+	public double getCreditos() {
 		return creditos;
 	}
-	public void setCreditos(int creditos) {
+	public void setCreditos(double creditos) {
 		this.creditos = creditos;
 	}
 	public String getCoordinadorEmail() {

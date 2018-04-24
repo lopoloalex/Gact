@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -16,9 +17,10 @@ public class Departamento implements Serializable {
 	private int departamentoID;
 	private String nombre;
 	private String responsableEmail;
-	@OneToMany(mappedBy="departamento",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="departamento",fetch=FetchType.EAGER )
 	private List<Profesor> profesoresDepartamento;
-	@OneToMany(mappedBy="departamento",fetch=FetchType.EAGER)
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="departamento") 
 	private List<Asignatura> asignaturasDepartamento;
 	
 	public Departamento() {

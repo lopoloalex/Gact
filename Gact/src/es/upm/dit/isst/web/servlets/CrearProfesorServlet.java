@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.web.dao.DepartamentoDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
+import es.upm.dit.isst.web.dao.model.Departamento;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
 
@@ -30,7 +31,13 @@ public class CrearProfesorServlet extends HttpServlet {
 		profesor.setEmail(email);
 		profesor.setName(name);
 		profesor.setPassword(password);
-		profesor.setDepartamento(DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoID));
+		
+		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoID);
+		
+		profesor.setDepartamento(departamento);
+		
+		
+		departamento.getProfesoresDepartamento().add(profesor);
 		
 		ProfesorDAOImplementation.getInstance().createProfessor(profesor);
 		

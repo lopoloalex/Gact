@@ -27,7 +27,7 @@
 
 				 <c:forEach items="${docencia_list}" var="docenciai">
 					<tr>
-						<td>${docenciai.getProfesorID().name}</td>
+						<td>${docenciai.getProfesorID().getName()}</td>
 						<td>${docenciai.getHorasA()}</td>
 						<td>${docenciai.getHorasB()}</td>
 						<td>${docenciai.getHorasC()}</td>

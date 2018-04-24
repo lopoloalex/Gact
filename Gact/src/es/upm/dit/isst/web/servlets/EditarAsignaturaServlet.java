@@ -47,7 +47,7 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		int semestre = Integer.parseInt(semestreS);
 
 		String creditosS = req.getParameter("Creditos");
-		int creditos = Integer.parseInt(creditosS);
+		double creditos = Double.parseDouble(creditosS);
 	
 		String horasTotalesAS = req.getParameter("HorasA");
 		double horasTotalesA = Double.parseDouble(horasTotalesAS);
