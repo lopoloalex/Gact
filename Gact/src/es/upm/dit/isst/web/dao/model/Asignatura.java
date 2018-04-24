@@ -25,12 +25,12 @@ public class Asignatura implements Serializable {
 	private double horasTotalesA;
 	private double horasTotalesB;
 	private double horasTotalesC;
-	
 	@ManyToMany (fetch=FetchType.EAGER,mappedBy="asignaturasImpartidas",cascade= {CascadeType.MERGE, CascadeType.PERSIST})
 	private List<Profesor> profesoresAsignatura;
-
 	@OneToMany (fetch=FetchType.EAGER,mappedBy="asignaturaID")
 	private List<Docencia> docencias;
+	@ManyToOne
+	private PlanDeEstudio planDeEstudio;
 	
 	public Asignatura() {
 		this.profesoresAsignatura=new ArrayList<Profesor>();
@@ -123,6 +123,14 @@ public class Asignatura implements Serializable {
 	}
 	public void setAcronimo(String acronimo) {
 		this.acronimo = acronimo;
+	}
+
+	public PlanDeEstudio getPlanDeEstudio() {
+		return planDeEstudio;
+	}
+
+	public void setPlanDeEstudio(PlanDeEstudio planDeEstudio) {
+		this.planDeEstudio = planDeEstudio;
 	}
 	
 	
