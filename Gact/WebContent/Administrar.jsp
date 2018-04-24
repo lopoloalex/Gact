@@ -9,6 +9,10 @@
                id="login-button"
                onClick="window.location.href='CrearAsignatura.jsp'">Crear
             nueva asignatura</button>
+                       <button type="button" class="btn btn-info pull-right"
+               id="login-button"
+               onClick="window.location.href='CrearPlanDeEstudio.jsp'">Crear
+            nuevo Plan de estudio</button>
          </h2>
          <div class="panel panel-info">
                <div class="title-grade">Grado en ingeniería de

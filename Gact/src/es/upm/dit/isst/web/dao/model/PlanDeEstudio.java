@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 public class PlanDeEstudio implements Serializable {
 	
 	@Id
-	private String Acronimo;
+	private String acronimo;
 	private String name;
 	
 	@ManyToMany (fetch=FetchType.EAGER,cascade= {CascadeType.PERSIST,CascadeType.MERGE})
@@ -30,11 +30,11 @@ public class PlanDeEstudio implements Serializable {
 	}
 
 	public String getAcronimo() {
-		return Acronimo;
+		return acronimo;
 	}
 
 	public void setAcronimo(String acronimo) {
-		Acronimo = acronimo;
+		this.acronimo = acronimo;
 	}
 
 	public String getName() {
