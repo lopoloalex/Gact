@@ -80,12 +80,9 @@
 	   <input type="hidden" class="btn btn-info pull-right"
                               name="asignaturaAEditarB" value=${asignatura.asignaturaID}>
 	   <button class ="btn btn-info pull-right" type="submit"> Guardar							
-                          
-         </button>
-                           
-                          
+         </button>                 
    </form>
-   </div>
+      	<a href="Administrar.jsp" class="btn btn-active">Volver</a>
 </section>
 </div>
 <%@ include file="inc/footer.jsp"%>

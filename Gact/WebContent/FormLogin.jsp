@@ -20,7 +20,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
-<body>
+<body id="login">
 	<div class="container">
 		<div class="top">
 			<h1 id="title" class="hidden"><span id="logo">Gestión de Actividad Docente </span></h1>

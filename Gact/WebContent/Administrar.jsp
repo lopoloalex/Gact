@@ -19,18 +19,22 @@
 		           </div>
 		      </c:if>
                <c:forEach items="${asignaturas_lista}" var="asignaturas">
-                        <a href="#" class="list-group-item"><label for="checkbox" name="nombre">${asignaturas.name}</label></a>
-                        <form action="BorrarAsignaturaServlet">					
-                           <input type="hidden" class="btn btn-info pull-right" name="asignaturaABorrar" value="${asignaturas.asignaturaID}" placeholder="Borrar">
-                               <button class ="btn btn-info pull-right"> Borrar</button>
-                           </form>
-                           <form action="RenderizarEditarAsignaturaServlet">
-                            <input type="hidden" class="btn btn-info pull-right"
-                              name="asignaturaAEditar" value="${asignaturas.asignaturaID}" placeholder="Editar">
-                           <button class ="btn btn-info pull-right" type="submit"> Editar								
-                          
-                           </button>
-                        </form>
+               		<div class="list-group-item">
+               			<a href="#" style="display: inline-block;"><label for="checkbox" name="nombre">${asignaturas.name}</label></a>
+                        <div class="subject-options">
+                        	<form action="BorrarAsignaturaServlet">					
+	                           <input type="hidden" class="btn btn-info pull-right" name="asignaturaABorrar" value="${asignaturas.asignaturaID}" placeholder="Borrar">
+	                               <button class ="btn btn-info pull-right"> Borrar</button>
+	                           </form>
+	                           <form action="RenderizarEditarAsignaturaServlet">
+	                            <input type="hidden" class="btn btn-info pull-right"
+	                              name="asignaturaAEditar" value="${asignaturas.asignaturaID}" placeholder="Editar">
+	                           <button class ="btn btn-info pull-right" type="submit"> Editar								
+	                          
+	                           </button>
+	                        </form>
+                        </div>
+               		</div>
                </c:forEach>
          </div>
       </div>

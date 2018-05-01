@@ -1,3 +1,7 @@
+body#login {
+	background: url(../images/photo_bg.jpg);
+	background-size: cover;
+}
 body {
 	background-size: cover;
 	font-size: 16px;
@@ -5,15 +9,6 @@ body {
 	font-weight: 300;
 	margin: 0;
 	color: #666;
-}
-
-a {
-	text-decoration: none;
-	color: #3c5fe8;
-}
-
-a:hover {
-	color: #aeaeae;
 }
 
 p.small {
@@ -37,6 +32,13 @@ div.panel-info div.title-grade {
     border-radius: 3px 3px 0 0;
 }
 
+.subject-options {
+	text-align:right;
+	float:right;
+}
+.subject-options form {
+	display: inline-block;
+}
 
 /* Layout */
 .container {
