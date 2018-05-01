@@ -39,6 +39,15 @@
 						</td>
 					</tr>
 				 </c:forEach>
+				 
+				 
+				  <tr>
+			         <th>Totales</th>
+			         <th>"${horasA}"/"${asignatura.getHorasTotalesA()}"</th>
+			         <th>"${horasB}"/"${asignatura.getHorasTotalesB()}"</th>
+			         <th>"${horasC}"/"${asignatura.getHorasTotalesB()}"</th>
+			         <th></th>
+			      </tr>
 			   </table>
 		  
 			        

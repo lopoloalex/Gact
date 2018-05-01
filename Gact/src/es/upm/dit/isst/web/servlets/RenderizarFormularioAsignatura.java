@@ -34,17 +34,27 @@ public class RenderizarFormularioAsignatura extends HttpServlet {
 		
 		List<Docencia> docencia_list= new ArrayList<Docencia>();
 		
-		
+		Docencia docencia = new Docencia(); 
+		Double horasATotal = 0.0;
+		Double horasBTotal = 0.0;
+		Double horasCTotal = 0.0;
 		
 		for(Profesor p :profesores) {
 			String reconoce = gestionar+p.getEmail();
-			System.out.println(DocenciaDAOImplementation.getInstance().readDocencia(reconoce));
-			docencia_list.add(DocenciaDAOImplementation.getInstance().readDocencia(reconoce));
+			docencia = DocenciaDAOImplementation.getInstance().readDocencia(reconoce);
+			docencia_list.add(docencia);
+			horasATotal = horasATotal+docencia.getHorasA();
+			horasBTotal = horasBTotal+docencia.getHorasB();
+			horasCTotal = horasCTotal+docencia.getHorasC();
 		}
 		
 		System.out.println(docencia_list);
-		req.getSession().setAttribute("docencia_list", docencia_list);
 		
+		req.getSession().setAttribute("docencia_list", docencia_list);
+		req.getSession().setAttribute("horasA", horasATotal);
+		req.getSession().setAttribute("horasB", horasBTotal);
+		req.getSession().setAttribute("horasC", horasCTotal);
+
 		
 		resp.sendRedirect(req.getContextPath() + "/FormularioAsignatura.jsp");
 		req.getSession().setAttribute("asignatura", asignatura);
