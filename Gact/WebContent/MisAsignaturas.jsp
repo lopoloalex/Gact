@@ -12,7 +12,6 @@
 			                  <label>No existen asignaturas de Grado</label>
 			           </div>
 			      </c:if>
-			      <span>${asignaturas_lista}</span>
 	               <c:forEach items="${asignaturas_lista}" var="asignaturas">
 	               		<div class="list-group-item">
 	               			<a href="#" style="display: inline-block;"><label for="checkbox" name="nombre">${asignaturas.name}</label></a>

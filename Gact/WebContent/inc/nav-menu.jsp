@@ -21,7 +21,7 @@
 	        <a  class="nav-link js-scroll-trigger" href="RenderizarMisAsignaturasServlet">Asignaturas</a>
 	      </li>
       </c:if>
-      <c:if test="${sessionScope.isResponsable || sessionScope.isCoordinador || sessionScope.adminLogged}">
+      <c:if test="${sessionScope.isResponsable || sessionScope.adminLogged}">
 	      <li class="nav-item">
 	        <a class="nav-link js-scroll-trigger" href="RenderizarAdministrar">Administrar</a>
 	      </li>
