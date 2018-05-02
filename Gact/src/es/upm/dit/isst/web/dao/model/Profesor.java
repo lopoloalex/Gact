@@ -23,7 +23,7 @@ public class Profesor implements Serializable{
 	private List<Asignatura> asignaturasImpartidas;
 	@ManyToOne
 	private Departamento departamento;
-	@OneToMany (fetch=FetchType.EAGER,mappedBy="profesorID",cascade= {CascadeType.PERSIST,CascadeType.MERGE})
+	@OneToMany (fetch=FetchType.EAGER,mappedBy="profesorID")
 	private List<Docencia> docenciasImpartidas;
 	
 	public Profesor () {

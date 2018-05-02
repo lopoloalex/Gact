@@ -13,7 +13,7 @@
          <div class="panel panel-info">
                <div class="title-grade">Grado en ingeniería de
                servicios y sistemas de Telecomunicación </div>
-               <c:if test="${ asignaturas_lista == null}">
+               <c:if test="${ asignaturas_lista.isEmpty()}">
 			       <div class="list-group-item">
 		                  <label>No existen asignaturas de Grado</label>
 		           </div>

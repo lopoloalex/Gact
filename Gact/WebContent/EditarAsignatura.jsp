@@ -50,7 +50,7 @@
       <div class="form-group">
          <label  class="col-lg-2 control-label">Créditos ECTS</label>
          <div class="col-lg-10">
-            <input type="number" name="Creditos" class="form-control" placeholder="Número de créditos ECTS" value="${asignatura.creditos}">
+            <input type="text" name="Creditos" class="form-control" placeholder="Número de créditos ECTS" value="${asignatura.creditos}">
          </div>
       </div>
       <div class="form-group">

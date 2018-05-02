@@ -17,9 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.web.dao.AsignaturaDAOImplementation;
 import es.upm.dit.isst.web.dao.DepartamentoDAOImplementation;
+import es.upm.dit.isst.web.dao.DocenciaDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
+import es.upm.dit.isst.web.dao.model.Docencia;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
 @WebServlet("/CrearAsignaturaServlet")
@@ -40,7 +42,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		int semestre = Integer.parseInt(semestreS);
 
 		String creditosS = req.getParameter("Creditos");
-		int creditos = Integer.parseInt(creditosS);
+		Double creditos = Double.parseDouble(creditosS);
 		String coordinadorEmail = req.getParameter("Coordinador");
 		
 
@@ -57,10 +59,6 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		double horasTotalesB = Double.parseDouble(horasTotalesBS);
 		String horasTotalesCS = req.getParameter("HorasA");
 		double horasTotalesC = Double.parseDouble(horasTotalesCS);
-
-
-
-
 
 		Asignatura nuevaAsignatura = new Asignatura();
 		nuevaAsignatura.setAsignaturaID(asignaturaID);
@@ -80,28 +78,39 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		List<Asignatura> asignaturas = coordinador.getAsignaturasImpartidas();
 		asignaturas.add(nuevaAsignatura);
 		coordinador.setAsignaturasImpartidas(asignaturas);
-		System.out.println(asignaturas);
+		System.out.println(coordinador.getName());
+		System.out.println(nuevaAsignatura);
+
 		
 		List<Profesor> asignaturaProfes = nuevaAsignatura.getProfesoresAsignatura();
 		asignaturaProfes.add(coordinador);
 		nuevaAsignatura.setProfesoresAsignatura(asignaturaProfes);
 		
-		System.out.println(asignaturaProfes);
-
-		
-		
 		departamento.getAsignaturasDepartamento().add(nuevaAsignatura);
 		
+		ProfesorDAOImplementation.getInstance().updateProfessor(coordinador);
 		AsignaturaDAOImplementation.getInstance().createAsignatura(nuevaAsignatura);
+		
+		Docencia docencia = new Docencia();
+		docencia.setDocencia(asignaturaIDS+coordinador.getEmail());
+		docencia.setHorasA(0.0);
+		docencia.setHorasB(0.0);
+		docencia.setHorasC(0.0);
+		docencia.setProfesorID(coordinador);
+		docencia.setAsignaturaID(nuevaAsignatura);
+		
+		DocenciaDAOImplementation.getInstance().createDocencia(docencia);
+		
+		coordinador.getDocenciasImpartidas().add(docencia);
+		nuevaAsignatura.getDocencias().add(docencia);
+		
+		ProfesorDAOImplementation.getInstance().updateProfessor(coordinador);
+		AsignaturaDAOImplementation.getInstance().updateAsignatura(nuevaAsignatura);
+		
 		req.getSession().setAttribute("asignaturas_lista", AsignaturaDAOImplementation.getInstance().readAllAsignatura());
 		
 
-		resp.sendRedirect(req.getContextPath()+"/Administrar.jsp");	
-		
-		
-		
-		
-
+		resp.sendRedirect(req.getContextPath()+"/Administrar.jsp");
 	}
 
 }
