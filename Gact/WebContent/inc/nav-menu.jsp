@@ -23,7 +23,7 @@
       </c:if>
       <c:if test="${sessionScope.isResponsable || sessionScope.isCoordinador || sessionScope.adminLogged}">
 	      <li class="nav-item">
-	        <a class="nav-link js-scroll-trigger" href="Administrar.jsp">Administrar</a>
+	        <a class="nav-link js-scroll-trigger" href="RenderizarAdministrar">Administrar</a>
 	      </li>
 	      <li class="nav-item">
 	      	 <a class="nav-link js-scroll-trigger" href="RenderizarCrearProfesorServlet">Nuevo Profesor</a>
