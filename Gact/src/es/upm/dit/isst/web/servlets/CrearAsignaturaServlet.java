@@ -103,8 +103,8 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		departamento.setAsignaturasDepartamento(asignaturasDepartamento);
 
 		//creamos la nueva docencia asignatura y hacemos un update de el coodinador y el departamento
-		DocenciaDAOImplementation.getInstance().createDocencia(docencia);
 		AsignaturaDAOImplementation.getInstance().createAsignatura(nuevaAsignatura);
+		DocenciaDAOImplementation.getInstance().createDocencia(docencia);
 		ProfesorDAOImplementation.getInstance().updateProfessor(coordinador);
 		DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
 		
