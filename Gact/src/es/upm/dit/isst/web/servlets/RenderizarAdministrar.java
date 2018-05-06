@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
 import es.upm.dit.isst.web.dao.model.Profesor;
@@ -19,6 +20,7 @@ public class RenderizarAdministrar extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
+		profesor = ProfesorDAOImplementation.getInstance().readProfessor(profesor.getEmail());
 		Departamento departamento = profesor.getDepartamento();
 		List<Asignatura> asignaturas_lista = departamento.getAsignaturasDepartamento();
 		
