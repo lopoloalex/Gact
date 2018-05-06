@@ -22,9 +22,9 @@
          </div>
       </div>
       <div class="form-group">
-         <label  class="col-md-4 control-label">Departamento</label>
+         <label  class="col-md-4 control-label">Departamento: ${departamento.nombre}</label>
          <div class="col-md-8">
-            <input type="text" name="DepartamentoID" class="form-control" placeholder="DepartamentoID">
+            <input type="hidden" name="DepartamentoID" class="form-control" value="${departamento.departamentoID}">
          </div>
       </div>
       <div class="form-group">
@@ -65,8 +65,13 @@
       </div>
       <div class="form-group">
          <label  class="col-md-4 control-label">Coordinador</label>
-         <div class="col-md-8">
-            <input type="text" name="Coordinador" class="form-control" placeholder="Nombre del coordinador">
+         	<div class="col-md-8">
+	      	 <select class="form-control" name="Coordinador">
+	           	<c:forEach items="${profesoresDepartamento_lista}" var="profesor">
+	             	 <option value="${profesor.email}">${profesor.name}</option>
+	         	</c:forEach>
+	         </select>
+	        </div>
          </div>
       </div>
       <div class="form-group">

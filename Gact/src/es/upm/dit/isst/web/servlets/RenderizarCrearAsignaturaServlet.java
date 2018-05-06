@@ -21,8 +21,11 @@ public class RenderizarCrearAsignaturaServlet extends HttpServlet {
 		
 		Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
 		Departamento departamento = profesor.getDepartamento();
+		req.getSession().setAttribute("departamento", departamento);
+		
 		List<Profesor> profesoresDepartamento_lista = departamento.getProfesoresDepartamento();
 		req.getSession().setAttribute("profesoresDepartamento_lista", profesoresDepartamento_lista);
+		
 		
 		resp.sendRedirect(req.getContextPath()+"/CrearAsignatura.jsp");
 	

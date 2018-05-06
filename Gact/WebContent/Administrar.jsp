@@ -7,7 +7,7 @@
             Administrar
             <button type="button" class="btn btn-info pull-right"
                id="login-button"
-               onClick="window.location.href='CrearAsignatura.jsp'">Crear nueva asignatura
+               onClick="window.location.href='RenderizarCrearAsignaturaServlet'">Crear nueva asignatura
             </button>
             <button type="button" class="btn btn-info pull-right"
                id="login-button"
