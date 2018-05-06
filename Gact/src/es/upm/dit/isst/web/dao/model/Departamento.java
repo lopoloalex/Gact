@@ -24,14 +24,11 @@ public class Departamento implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="departamento") 
 	private List<Asignatura> asignaturasDepartamento;
 	
-	@ManyToMany (fetch=FetchType.EAGER,mappedBy="departamentosPlanEstudio",cascade= {CascadeType.MERGE, CascadeType.PERSIST})
-	private List<PlanDeEstudio> planesDeEstudio;
 
 	
 	public Departamento() {
 		this.asignaturasDepartamento=new ArrayList<Asignatura>();
 		this.profesoresDepartamento=new ArrayList<Profesor>();
-		this.planesDeEstudio=new ArrayList<PlanDeEstudio>();
 		
 	}
 	public int getDepartamentoID() {
@@ -64,10 +61,5 @@ public class Departamento implements Serializable {
 	public void setAsignaturasDepartamento(List<Asignatura> asignaturasDepartamento) {
 		this.asignaturasDepartamento = asignaturasDepartamento;
 	}
-	public List<PlanDeEstudio> getPlanesDeEstudio() {
-		return planesDeEstudio;
-	}
-	public void setPlanesDeEstudio(List<PlanDeEstudio> planesDeEstudio) {
-		this.planesDeEstudio = planesDeEstudio;
-	}
+
 }

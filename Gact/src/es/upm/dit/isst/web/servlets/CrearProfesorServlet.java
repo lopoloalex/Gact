@@ -1,6 +1,7 @@
 package es.upm.dit.isst.web.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,19 +27,24 @@ public class CrearProfesorServlet extends HttpServlet {
 		String password = req.getParameter("password");
 		String email = req.getParameter("email");
 		
+		//asignamos los atributos del nuevo profesor
 		Profesor profesor = new Profesor();
-		
 		profesor.setEmail(email);
 		profesor.setName(name);
 		profesor.setPassword(password);
 		
+		//leemos el departamento asignado al profesor
 		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoID);
 		
+		//se lo asignamos
 		profesor.setDepartamento(departamento);
 		
-		
-		departamento.getProfesoresDepartamento().add(profesor);
-		
+		//Guardamos el nuevo profesor del departamento
+		List<Profesor> profesoresDepartamento =departamento.getProfesoresDepartamento();
+		profesoresDepartamento.add(profesor);
+		departamento.setProfesoresDepartamento(profesoresDepartamento);
+	
+		//Creamos el profesor y actualizamos el departamento
 		ProfesorDAOImplementation.getInstance().createProfessor(profesor);
 		DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
 		

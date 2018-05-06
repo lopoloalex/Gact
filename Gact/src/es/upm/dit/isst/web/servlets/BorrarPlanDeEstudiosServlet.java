@@ -33,15 +33,7 @@ public class BorrarPlanDeEstudiosServlet extends HttpServlet{
 		}
 		
 		
-		for(Departamento d : plan.getDepartamentosPlanEstudio()) {
-			for (PlanDeEstudio p: d.getPlanesDeEstudio()) {
-				if(p==plan) {			
-					d.getPlanesDeEstudio().remove(p);
-					DepartamentoDAOImplementation.getInstance().updateDepartamento(d);
-				}
-			}
-		}
-		
+
 		PlanDeEstudioDAOImplementation.getInstance().deletePlanDeEstudio(plan);
 		
 		req.getSession().setAttribute("plan_list", PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio());

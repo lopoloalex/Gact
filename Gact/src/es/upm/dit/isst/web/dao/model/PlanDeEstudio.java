@@ -18,14 +18,10 @@ public class PlanDeEstudio implements Serializable {
 	private String acronimo;
 	private String name;
 	
-	@ManyToMany (fetch=FetchType.EAGER,cascade= {CascadeType.PERSIST,CascadeType.MERGE})
-	private List<Departamento> departamentosPlanEstudio;
-	
 	@OneToMany (fetch=FetchType.EAGER,mappedBy="planDeEstudio")
 	private List<Asignatura> asignaturasPlanEstudio;
 	
 	public PlanDeEstudio() {
-		this.departamentosPlanEstudio=new ArrayList<Departamento>();
 		this.asignaturasPlanEstudio=new ArrayList<Asignatura>();
 	}
 
@@ -43,14 +39,6 @@ public class PlanDeEstudio implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Departamento> getDepartamentosPlanEstudio() {
-		return departamentosPlanEstudio;
-	}
-
-	public void setDepartamentosPlanEstudio(List<Departamento> departamentosPlanEstudio) {
-		this.departamentosPlanEstudio = departamentosPlanEstudio;
 	}
 
 	public List<Asignatura> getAsignaturasPlanEstudio() {

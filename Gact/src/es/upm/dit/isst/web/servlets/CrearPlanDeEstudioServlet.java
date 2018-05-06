@@ -22,22 +22,16 @@ public class CrearPlanDeEstudioServlet extends HttpServlet{
 		String acronimo = req.getParameter("acronimo");
 		String name = req.getParameter("name");
 
-		
+		//asignamos los parametros del nuevo plan de estudios
 		PlanDeEstudio nuevoPlan = new PlanDeEstudio();
 		nuevoPlan.setAcronimo(acronimo);
 		nuevoPlan.setName(name);
 		
-		Profesor pro= (Profesor) req.getSession().getAttribute("profesor");
-		Departamento departamento = pro.getDepartamento();
-
-		departamento.getPlanesDeEstudio().add(nuevoPlan);
-		nuevoPlan.getDepartamentosPlanEstudio().add(departamento);
-		
+		//guardamos el nuevo plan de estudios
 		PlanDeEstudioDAOImplementation.getInstance().createPlanDeEstudio(nuevoPlan);
-		DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
-	
 		
-		req.getSession().setAttribute("plan_list", PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio());
+		
+		req.getSession().setAttribute("plan_lista", PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio());
 
 		resp.sendRedirect(req.getContextPath() + "/CrearPlanDeEstudio.jsp");
 		

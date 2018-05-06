@@ -23,7 +23,7 @@
 
 				</tr>
 
-				<c:forEach items="${plan_list}" var="plani">
+				<c:forEach items="${plan_lista}" var="plani">
 					<tr>
 						<td>${plani.acronimo}</td>
 						<td>${plani.getName()}</td>
