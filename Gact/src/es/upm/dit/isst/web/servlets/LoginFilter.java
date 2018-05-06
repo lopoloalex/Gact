@@ -41,28 +41,7 @@ public class LoginFilter implements Filter {
         	}
         	
         } else	{
-        	if(session.getAttribute("profesor") != null) {
-            	// El usuario está logeado
-            	Profesor profesorLogged = (Profesor)(session.getAttribute("profesor"));
-            	Departamento departamento = profesorLogged.getDepartamento();
-            	List<Asignatura> asignaturas = departamento.getAsignaturasDepartamento();
-            	
-            	// El profesor es responsable del departamento
-            	if(profesorLogged.getEmail() == departamento.getResponsableEmail()) {
-            		session.setAttribute("isResponsable", true);
-            		session.setAttribute("isCoordinador", false);
-            	}
-            	
-            	// El profesor es coordinador de asignatura
-            	for(Asignatura asignatura : asignaturas) {
-            		if(profesorLogged.getEmail() == asignatura.getCoordinadorEmail()) {
-            			session.setAttribute("isCoordinador", true);
-            			session.setAttribute("isResponsable", false);
-            			break;
-            		}
-            	}
-            }
-            
+        	
             if (hasAccess(session, requestPath)) {
             	chain.doFilter(req, res); // Usuario logeado, continua la petición
             } else {
