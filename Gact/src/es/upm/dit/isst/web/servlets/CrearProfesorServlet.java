@@ -40,6 +40,7 @@ public class CrearProfesorServlet extends HttpServlet {
 		departamento.getProfesoresDepartamento().add(profesor);
 		
 		ProfesorDAOImplementation.getInstance().createProfessor(profesor);
+		DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
 		
 		req.getSession().setAttribute("profesor_list", ProfesorDAOImplementation.getInstance().readAllProfessor());
 

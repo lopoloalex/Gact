@@ -53,11 +53,13 @@
             <input type="text" name="Creditos" class="form-control" placeholder="Número de créditos ECTS" value="${asignatura.creditos}">
          </div>
       </div>
-      <div class="form-group">
-         <label  class="col-lg-2 control-label">Coordinador</label>
-         <div class="col-lg-10">
-            <input type="text" name="Coordinador" class="form-control" placeholder="Nombre del coordinador" value="${asignatura.coordinadorEmail}">
-         </div>
+      <div class="col-lg-10">
+      	 <label  class="col-lg-2 control-label">Coordinador</label>
+      	 	<select class="form-control" name="Coordinador">
+            	<c:forEach items="${profesoresDepartamento_lista}" var="profesor">
+              	 	<option value="${profesor.email}">${profesor.name}</option>
+           		</c:forEach>
+           	</select>
       </div>
       <div class="form-group">
 	      <label  class="col-lg-2 control-label">Horas de Teoría</label>
@@ -77,6 +79,7 @@
 	         <input type="number" name="HorasC" class="form-control" placeholder="Horas de Laboratorio" value="${asignatura.horasTotalesC}">
 	      </div>
 	  </div>
+	  
 	   <input type="hidden" class="btn btn-info pull-right"
                               name="asignaturaAEditarB" value=${asignatura.asignaturaID}>
 	   <button class ="btn btn-info pull-right" type="submit"> Guardar							

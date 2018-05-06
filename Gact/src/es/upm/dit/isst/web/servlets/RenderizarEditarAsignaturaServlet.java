@@ -8,9 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.List;
 import es.upm.dit.isst.web.dao.AsignaturaDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
+import es.upm.dit.isst.web.dao.model.Profesor;
+import es.upm.dit.isst.web.dao.model.Departamento;
+
 @WebServlet("/RenderizarEditarAsignaturaServlet")
 public class RenderizarEditarAsignaturaServlet extends HttpServlet{
 
@@ -20,6 +24,11 @@ public class RenderizarEditarAsignaturaServlet extends HttpServlet{
 	int asignaturaID = Integer.parseInt(asignaturaIDS);
 	Asignatura asignatura = AsignaturaDAOImplementation.getInstance().readAsignatura(asignaturaID);
 	req.getSession().setAttribute("asignatura", asignatura);
+	
+	Departamento departamento = asignatura.getDepartamento();
+	List<Profesor> profesoresDepartamento_lista = departamento.getProfesoresDepartamento();
+	req.getSession().setAttribute("profesoresDepartamento_lista", profesoresDepartamento_lista);
+	
 	resp.sendRedirect(req.getContextPath()+"/EditarAsignatura.jsp");	
 	
 	}

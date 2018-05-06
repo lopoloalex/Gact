@@ -9,28 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
-@WebServlet("/RenderizarAdministrar")
-public class RenderizarAdministrar extends HttpServlet {
+@WebServlet("/RenderizarCrearAsignaturaServlet")
+public class RenderizarCrearAsignaturaServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
 		Departamento departamento = profesor.getDepartamento();
-		List<Asignatura> asignaturas_lista = departamento.getAsignaturasDepartamento();
+		List<Profesor> profesoresDepartamento_lista = departamento.getProfesoresDepartamento();
+		req.getSession().setAttribute("profesoresDepartamento_lista", profesoresDepartamento_lista);
 		
-		req.getSession().setAttribute("asignaturas_lista", asignaturas_lista);
-		req.getSession().setAttribute("departamento", departamento);
-		
-		resp.sendRedirect(req.getContextPath() + "/Administrar.jsp");
-
-
-		
-		
+		resp.sendRedirect(req.getContextPath()+"/CrearAsignatura.jsp");
+	
 	}
-		
-
 }

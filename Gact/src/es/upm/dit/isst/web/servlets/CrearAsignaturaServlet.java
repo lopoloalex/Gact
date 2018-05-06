@@ -56,9 +56,9 @@ public class CrearAsignaturaServlet extends HttpServlet{
 
 		String horasTotalesAS = req.getParameter("HorasA");
 		double horasTotalesA = Double.parseDouble(horasTotalesAS);
-		String horasTotalesBS = req.getParameter("HorasA");
+		String horasTotalesBS = req.getParameter("HorasB");
 		double horasTotalesB = Double.parseDouble(horasTotalesBS);
-		String horasTotalesCS = req.getParameter("HorasA");
+		String horasTotalesCS = req.getParameter("HorasC");
 		double horasTotalesC = Double.parseDouble(horasTotalesCS);
 
 		Asignatura nuevaAsignatura = new Asignatura();
@@ -107,6 +107,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		
 		ProfesorDAOImplementation.getInstance().updateProfessor(coordinador);
 		AsignaturaDAOImplementation.getInstance().updateAsignatura(nuevaAsignatura);
+		DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
 		
 		req.getSession().setAttribute("asignaturas_lista", AsignaturaDAOImplementation.getInstance().readAllAsignatura());
 		
