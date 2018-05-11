@@ -41,9 +41,9 @@ public class AddProfesorServlet extends HttpServlet{
 		a.add(asignatura);
 		profesor.setAsignaturasImpartidas(a);
 		
-		List<Profesor> b =asignatura.getProfesoresAsignatura();
-		b.add(profesor);
-		asignatura.setProfesoresAsignatura(b);
+//		List<Profesor> b =asignatura.getProfesoresAsignatura();
+//		b.add(profesor);
+//		asignatura.setProfesoresAsignatura(b);
 		
 		ProfesorDAOImplementation.getInstance().updateProfessor(profesor);
 		AsignaturaDAOImplementation.getInstance().updateAsignatura(asignatura);

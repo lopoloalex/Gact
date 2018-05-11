@@ -7,20 +7,20 @@
 			 <div class="panel panel-info">
 	               <div class="title-grade">Grado en ingeniería de
 	               servicios y sistemas de Telecomunicación </div>
-	               <c:if test="${ asignaturas_lista.isEmpty()}">
+	               <c:if test="${asignaturas_lista.isEmpty()}">
 				       <div class="list-group-item">
 			                  <label>No existen asignaturas de Grado</label>
 			           </div>
 			      </c:if>
 	               <c:forEach items="${asignaturas_lista}" var="asignaturas">
 	               		<div class="list-group-item">
-	               			<a href="#" style="display: inline-block;"><label for="checkbox" name="nombre">${asignaturas.name}</label></a>
+	               			<a href="#" style="display: inline-block;"><span>${asignaturas.name}</span></a>
 	                        <div class="subject-options">
 	                        	<c:if test="${asignaturas.coordinadorEmail == sessionScope.profesor.getEmail()}">	
 									<form action="RenderizarFormularioAsignatura">	
 										<input type="hidden" class="btn btn-info pull-right"
 										name="asignaturaAGestionar" value="${asignaturas.asignaturaID}" >
-										<button class ="btn btn-info pull-right" type="submit"> Gestionar</button>
+										<button class ="btn btn-info pull-right" type="submit">Gestionar</button>
 									</form>
 								</c:if>
 	                        </div>

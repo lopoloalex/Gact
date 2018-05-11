@@ -108,7 +108,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		ProfesorDAOImplementation.getInstance().updateProfessor(coordinador);
 		DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
 		
-		
+		System.out.println(ProfesorDAOImplementation.getInstance().readProfessor(coordinador.getEmail()).getAsignaturasImpartidas());
 		
 		req.getSession().setAttribute("asignaturas_lista", asignaturasDepartamento);
 		
