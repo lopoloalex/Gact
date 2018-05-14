@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.web.dao.AsignaturaDAOImplementation;
 import es.upm.dit.isst.web.dao.DepartamentoDAOImplementation;
+import es.upm.dit.isst.web.dao.DocenciaDAOImplementation;
 import es.upm.dit.isst.web.dao.PlanDeEstudioDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
+import es.upm.dit.isst.web.dao.model.Docencia;
 import es.upm.dit.isst.web.dao.model.PlanDeEstudio;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
@@ -72,8 +74,26 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		asignatura.setnGrupos(nGrupos);
 		asignatura.setSemestre(semestre);
 		asignatura.setPlanDeEstudio(plan);
-		coordinador.getAsignaturasImpartidas().add(asignatura);
-		
+		if(asignatura.getProfesoresAsignatura().contains(coordinador)) {
+			
+		} else {
+			coordinador.getAsignaturasImpartidas().add(asignatura);
+			Docencia docencia = new Docencia();
+			docencia.setDocencia(asignaturaIDS+coordinador.getEmail());
+			docencia.setHorasA(0.0);
+			docencia.setHorasB(0.0);
+			docencia.setHorasC(0.0);
+			docencia.setProfesorID(coordinador);
+			docencia.setAsignaturaID(AsignaturaDAOImplementation.getInstance().readAsignatura(asignaturaID));
+			DocenciaDAOImplementation.getInstance().createDocencia(docencia);
+			docencia = DocenciaDAOImplementation.getInstance().readDocencia(docencia.getDocencia());
+			asignatura.getProfesoresAsignatura().add(coordinador);
+			ProfesorDAOImplementation.getInstance().updateProfessor(coordinador);
+			coordinador.getDocenciasImpartidas().add(docencia);
+			asignatura.getDocencias().add(docencia);
+		}
+
+	
 		
 		AsignaturaDAOImplementation.getInstance().updateAsignatura(asignatura);
 		
