@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import es.upm.dit.isst.web.dao.AsignaturaDAOImplementation;
 import es.upm.dit.isst.web.dao.DepartamentoDAOImplementation;
 import es.upm.dit.isst.web.dao.DocenciaDAOImplementation;
+import es.upm.dit.isst.web.dao.PlanDeEstudioDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
 import es.upm.dit.isst.web.dao.model.Docencia;
+import es.upm.dit.isst.web.dao.model.PlanDeEstudio;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
 @WebServlet("/CrearAsignaturaServlet")
@@ -47,6 +49,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		double horasTotalesC = Double.parseDouble(horasTotalesCS);
 		
 		//Cargamos el departamento y profesor asignado como coordinador de la base de datos
+		PlanDeEstudio plan = PlanDeEstudioDAOImplementation.getInstance().readPlanDeEstudio(titulacion);
 		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoID);
 		Profesor coordinador = ProfesorDAOImplementation.getInstance().readProfessor(coordinadorEmail);
 
@@ -64,7 +67,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		nuevaAsignatura.setHorasTotalesC(horasTotalesC);
 		nuevaAsignatura.setnGrupos(nGrupos);
 		nuevaAsignatura.setSemestre(semestre);
-		nuevaAsignatura.setTitulacion(titulacion);
+		nuevaAsignatura.setPlanDeEstudio(plan);
 		AsignaturaDAOImplementation.getInstance().createAsignatura(nuevaAsignatura);
 		Asignatura asignatura = AsignaturaDAOImplementation.getInstance().readAsignatura(asignaturaID);
 		

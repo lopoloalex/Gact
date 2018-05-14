@@ -29,26 +29,19 @@ public class BorrarAsignaturaServlet extends HttpServlet{
 		int id = Integer.parseInt(borrar);
 //		
 //		//asignatura a borrar
-		Asignatura aborrar = AsignaturaDAOImplementation.getInstance().readAsignatura(id);
-//		//dao de la asignatura a borrar
-		AsignaturaDAO dao = AsignaturaDAOImplementation.getInstance();
-//		
-//		//borramos la asignatura de la lista de asignaturas del departamento
-//		Departamento departamento = aborrar.getDepartamento();
-//		Set<Asignatura> asignaturas  = departamento.getAsignaturasDepartamento();
-//		asignaturas.remove(aborrar);
-//		departamento.setAsignaturasDepartamento(asignaturas);
-//				
-//		//borramos todas las las docencias de esa asignatura en la lista del docencias de sus profesores
+		Asignatura aborrar =  AsignaturaDAOImplementation.getInstance().readAsignatura(id);
+		Departamento departamento = DepartamentoDAOImplementation.getInstance().readDepartamento(aborrar.getDepartamento().getDepartamentoID());
+		
+		//borramos la asignatura de la lista de asignaturas del departamento
+//		departamento.getAsignaturasDepartamento().remove(aborrar);
+				
+		//borramos todas las las docencias de esa asignatura en la lista del docencias de sus profesores
 //		for (Profesor profesor: aborrar.getProfesoresAsignatura() ) {
 //			Docencia docencia = DocenciaDAOImplementation.getInstance().readDocencia(aborrar.getAsignaturaID()+profesor.getEmail());
-//			Set<Docencia> docenciasProfesorBorrar =profesor.getDocenciasImpartidas();
-//			docenciasProfesorBorrar.remove(docencia);
-//			profesor.setDocenciasImpartidas(docenciasProfesorBorrar);
-//			ProfesorDAOImplementation.getInstance().updateProfessor(profesor);					
+//			DocenciaDAOImplementation.getInstance().deleteDocencia(docencia);
 //		}
-//		
-//		
+		
+		
 //		//Borramos todas las docencias impartidas en esa asignatura
 //		Set<Docencia> docenciasaBorrar = aborrar.getDocencias();
 //		for(Docencia docencia: docenciasaBorrar) {
@@ -57,11 +50,11 @@ public class BorrarAsignaturaServlet extends HttpServlet{
 //		
 		//FALTA  BORRAR ASIGNATURA EN LA LISTA DE PLAN DE ESTUDIO
 		
-		dao.deleteAsignatura(aborrar);
+		AsignaturaDAOImplementation.getInstance().deleteAsignatura(aborrar);
 		//DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
 
 		
-		req.getSession().setAttribute("asignaturas_lista", AsignaturaDAOImplementation.getInstance().readAllAsignatura());
+		req.getSession().setAttribute("asignaturas_lista", departamento.getAsignaturasDepartamento() );
 		
 
 		resp.sendRedirect(req.getContextPath()+"/Administrar.jsp");	

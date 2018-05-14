@@ -15,7 +15,6 @@ public class Asignatura implements Serializable {
 
 	@Id
 	private int asignaturaID;
-	private String titulacion;
 	private String name;
 	private String acronimo;
 	private int nGrupos;
@@ -29,7 +28,7 @@ public class Asignatura implements Serializable {
 	private double horasTotalesC;
 	@ManyToMany (fetch=FetchType.EAGER,mappedBy="asignaturasImpartidas",cascade= { CascadeType.MERGE, CascadeType.PERSIST})
 	private Set<Profesor> profesoresAsignatura;
-	@OneToMany (fetch=FetchType.EAGER,mappedBy="asignaturaID1",cascade= { CascadeType.MERGE, CascadeType.PERSIST})
+	@OneToMany (fetch=FetchType.EAGER,mappedBy="asignaturaID1")
 	private Set<Docencia> docencias;
 	@ManyToOne
 	private PlanDeEstudio planDeEstudio;
@@ -52,12 +51,7 @@ public class Asignatura implements Serializable {
 	public void setAsignaturaID(int asignaturaID) {
 		this.asignaturaID = asignaturaID;
 	}
-	public String getTitulacion() {
-		return titulacion;
-	}
-	public void setTitulacion(String titulacion) {
-		this.titulacion = titulacion;
-	}
+
 	public int getnGrupos() {
 		return nGrupos;
 	}

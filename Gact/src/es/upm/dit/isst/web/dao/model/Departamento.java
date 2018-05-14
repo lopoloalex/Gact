@@ -20,7 +20,7 @@ public class Departamento implements Serializable {
 	private int departamentoID;
 	private String nombre;
 	private String responsableEmail;
-	@OneToMany(mappedBy="departamento",fetch=FetchType.EAGER )
+	@OneToMany(mappedBy="departamento",fetch=FetchType.EAGER ,cascade={ CascadeType.MERGE, CascadeType.PERSIST} )
 	private Set<Profesor> profesoresDepartamento;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="departamentoA",cascade={ CascadeType.MERGE, CascadeType.PERSIST}) 

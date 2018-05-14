@@ -36,8 +36,7 @@ public class BorrarPlanDeEstudiosServlet extends HttpServlet{
 
 		PlanDeEstudioDAOImplementation.getInstance().deletePlanDeEstudio(plan);
 		
-		req.getSession().setAttribute("plan_list", PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio());
-
+		req.getSession().setAttribute("plan_lista", PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio() );
 		resp.sendRedirect(req.getContextPath() + "/CrearPlanDeEstudio.jsp");
 		
 	}

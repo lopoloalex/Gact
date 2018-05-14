@@ -7,12 +7,14 @@
    </h2>
    <form class="form-horizontal" role="form" action="EditarAsignaturaServlet">
       <div class="form-group">
-         <label  class="col-lg-2 control-label">Grado</label>
+         <label  class="col-lg-2 control-label">Plan de Estudio</label>
          <div class="col-lg-10">
-            <select class="form-control" name="Titulacion">
-               <option value="grado">Grado en Ingeniería de Tecnilogias y Servicios de la Telecomunicación</option>
-               <option value="master">Máster en ingeniería de Telecomunicaciones</option>
-            </select>
+	      	 <select class="form-control" name="Titulacion">
+	           	<c:forEach items="${planes_lista}" var="plan">
+	             	 <option value="${plan.acronimo}">${plan.name}</option>
+	         	</c:forEach>
+	         </select>
+	         	
          </div>
       </div>
       <div class="form-group">

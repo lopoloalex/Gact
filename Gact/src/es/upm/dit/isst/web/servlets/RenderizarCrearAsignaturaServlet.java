@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.dit.isst.web.dao.PlanDeEstudioDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
@@ -25,8 +26,10 @@ public class RenderizarCrearAsignaturaServlet extends HttpServlet {
 		req.getSession().setAttribute("departamento", departamento);
 		
 		Set<Profesor> profesoresDepartamento_lista = departamento.getProfesoresDepartamento();
-		req.getSession().setAttribute("profesoresDepartamento_lista", profesoresDepartamento_lista);
 		
+		req.getSession().setAttribute("profesoresDepartamento_lista", profesoresDepartamento_lista);
+		req.getSession().setAttribute("planes_lista", PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio());
+
 		
 		resp.sendRedirect(req.getContextPath()+"/CrearAsignatura.jsp");
 	

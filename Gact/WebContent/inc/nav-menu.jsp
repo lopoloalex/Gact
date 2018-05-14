@@ -36,6 +36,11 @@
 	        <a  class="nav-link js-scroll-trigger" href="CrearDepartamento.jsp">Nuevo Departamento</a>
 	      </li>
       </c:if>
+      <c:if test="${sessionScope.adminLogged}">
+      	<li class="nav-item">
+      	<a class="nav-link js-scroll-trogger" href="RenderizarCrearPlanDeEstudioServlet">Nuevo Plan de Estudio</a>
+      	</li>
+      </c:if>
       <li class="nav-item">
         <%@ include file = "../FormLogout.jsp" %>
       </li>

@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.web.dao.AsignaturaDAOImplementation;
 import es.upm.dit.isst.web.dao.DepartamentoDAOImplementation;
+import es.upm.dit.isst.web.dao.PlanDeEstudioDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
+import es.upm.dit.isst.web.dao.model.PlanDeEstudio;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
 @WebServlet("/EditarAsignaturaServlet")
@@ -37,6 +39,7 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		String acronimo = req.getParameter("Acronimo");
 		
 		String titulacion = req.getParameter("Titulacion");
+		PlanDeEstudio plan = PlanDeEstudioDAOImplementation.getInstance().readPlanDeEstudio(titulacion);
 
 		String coordinadorEmail = req.getParameter("Coordinador");
 		
@@ -67,7 +70,7 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		asignatura.setHorasTotalesC(horasTotalesC);
 		asignatura.setnGrupos(nGrupos);
 		asignatura.setSemestre(semestre);
-		asignatura.setTitulacion(titulacion);
+		asignatura.setPlanDeEstudio(plan);
 
 		
 		
