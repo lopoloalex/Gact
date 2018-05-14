@@ -2,7 +2,9 @@ package es.upm.dit.isst.web.dao.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,16 +21,16 @@ public class Departamento implements Serializable {
 	private String nombre;
 	private String responsableEmail;
 	@OneToMany(mappedBy="departamento",fetch=FetchType.EAGER )
-	private List<Profesor> profesoresDepartamento;
+	private Set<Profesor> profesoresDepartamento;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="departamento") 
-	private List<Asignatura> asignaturasDepartamento;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="departamentoA",cascade={ CascadeType.MERGE, CascadeType.PERSIST}) 
+	private Set<Asignatura> asignaturasDepartamento;
 	
 
 	
 	public Departamento() {
-		this.asignaturasDepartamento=new ArrayList<Asignatura>();
-		this.profesoresDepartamento=new ArrayList<Profesor>();
+		this.asignaturasDepartamento=new HashSet<Asignatura>();
+		this.profesoresDepartamento=new HashSet<Profesor>();
 		
 	}
 	public int getDepartamentoID() {
@@ -49,16 +51,16 @@ public class Departamento implements Serializable {
 	public void setResponsableEmail(String responsableEmail) {
 		this.responsableEmail = responsableEmail;
 	}
-	public List<Profesor> getProfesoresDepartamento() {
+	public Set<Profesor> getProfesoresDepartamento() {
 		return profesoresDepartamento;
 	}
-	public void setProfesoresDepartamento(List<Profesor> profesoresDepartamento) {
+	public void setProfesoresDepartamento(Set<Profesor> profesoresDepartamento) {
 		this.profesoresDepartamento = profesoresDepartamento;
 	}
-	public List<Asignatura> getAsignaturasDepartamento() {
+	public Set<Asignatura> getAsignaturasDepartamento() {
 		return asignaturasDepartamento;
 	}
-	public void setAsignaturasDepartamento(List<Asignatura> asignaturasDepartamento) {
+	public void setAsignaturasDepartamento(Set<Asignatura> asignaturasDepartamento) {
 		this.asignaturasDepartamento = asignaturasDepartamento;
 	}
 

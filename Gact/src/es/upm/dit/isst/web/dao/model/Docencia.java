@@ -16,7 +16,7 @@ public class Docencia implements Serializable {
 	@ManyToOne
 	private Profesor profesorID;
 	@ManyToOne
-	private Asignatura asignaturaID;
+	private Asignatura asignaturaID1;
 	
 	public Docencia() {
 		
@@ -62,10 +62,10 @@ public class Docencia implements Serializable {
 	}
 
 	public Asignatura getAsignaturaID() {
-		return asignaturaID;
+		return asignaturaID1;
 	}
 
 	public void setAsignaturaID(Asignatura asignaturaID) {
-		this.asignaturaID = asignaturaID;
+		this.asignaturaID1 = asignaturaID;
 	}
 }

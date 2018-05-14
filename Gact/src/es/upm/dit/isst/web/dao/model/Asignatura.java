@@ -1,7 +1,9 @@
 package es.upm.dit.isst.web.dao.model;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -21,26 +23,26 @@ public class Asignatura implements Serializable {
 	private double creditos;
 	private String coordinadorEmail;
 	@ManyToOne
-	private Departamento departamento;
+	private Departamento departamentoA;
 	private double horasTotalesA;
 	private double horasTotalesB;
 	private double horasTotalesC;
-	@ManyToMany (fetch=FetchType.EAGER,mappedBy="asignaturasImpartidas",cascade= {CascadeType.MERGE, CascadeType.PERSIST})
-	private List<Profesor> profesoresAsignatura;
-	@OneToMany (fetch=FetchType.EAGER,mappedBy="asignaturaID")
-	private List<Docencia> docencias;
+	@ManyToMany (fetch=FetchType.EAGER,mappedBy="asignaturasImpartidas",cascade= { CascadeType.MERGE, CascadeType.PERSIST})
+	private Set<Profesor> profesoresAsignatura;
+	@OneToMany (fetch=FetchType.EAGER,mappedBy="asignaturaID1",cascade= { CascadeType.MERGE, CascadeType.PERSIST})
+	private Set<Docencia> docencias;
 	@ManyToOne
 	private PlanDeEstudio planDeEstudio;
 	
 	public Asignatura() {
-		this.profesoresAsignatura=new ArrayList<Profesor>();
-		this.docencias = new ArrayList<Docencia>();
+		this.profesoresAsignatura=new HashSet<Profesor>();
+		this.docencias = new HashSet<Docencia>();
 	}
 	
-	public List<Docencia> getDocencias() {
+	public Set<Docencia> getDocencias() {
 		return docencias;
 	}
-	public void setDocencias(List<Docencia> docencias) {
+	public void setDocencias(Set<Docencia> docencias) {
 		this.docencias = docencias;
 	}
 
@@ -83,10 +85,10 @@ public class Asignatura implements Serializable {
 		this.coordinadorEmail = coordinadorEmail;
 	}
 	public Departamento getDepartamento() {
-		return departamento;
+		return departamentoA;
 	}
 	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
+		this.departamentoA = departamento;
 	}
 	public double getHorasTotalesA() {
 		return horasTotalesA;
@@ -106,10 +108,10 @@ public class Asignatura implements Serializable {
 	public void setHorasTotalesC(double horasTotalesC) {
 		this.horasTotalesC = horasTotalesC;
 	}
-	public List<Profesor> getProfesoresAsignatura() {
+	public Set<Profesor> getProfesoresAsignatura() {
 		return profesoresAsignatura;
 	}
-	public void setProfesoresAsignatura(List<Profesor> profesoresAsignatura) {
+	public void setProfesoresAsignatura(Set<Profesor> profesoresAsignatura) {
 		this.profesoresAsignatura = profesoresAsignatura;
 	}
 	public String getName() {

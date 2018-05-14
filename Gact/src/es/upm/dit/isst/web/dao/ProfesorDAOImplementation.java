@@ -65,6 +65,7 @@ public class ProfesorDAOImplementation implements ProfesorDAO {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
+			System.out.println(professor.toString());
 			session.save(professor);
 			session.getTransaction().commit();
 		}
@@ -80,10 +81,17 @@ public class ProfesorDAOImplementation implements ProfesorDAO {
 		Session session = SessionFactoryService.get().openSession();
 		Profesor prof = null;
 		try {
-			prof = session.get(Profesor.class, email);
+			
+			session.beginTransaction();
+			prof = (Profesor) session
+					.createQuery("select p from Profesor p where p.email= :email")
+					.setParameter("email", email)
+					.uniqueResult();			
+					session.getTransaction().commit();
+//			prof = session.get(Profesor.class, email);
 		}
 		catch (Exception e){
-
+			System.out.println(e.getMessage());
 		}
 		finally {
 			session.close();

@@ -41,7 +41,7 @@ public class DocenciaDAOImplementation implements DocenciaDAO {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			session.save(docencia);
+			session.saveOrUpdate(docencia);
 			session.getTransaction().commit();
 		}
 		catch (Exception e){

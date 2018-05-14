@@ -2,6 +2,7 @@ package es.upm.dit.isst.web.servlets;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +23,7 @@ public class RenderizarAdministrar extends HttpServlet {
 		Profesor profesor = (Profesor) req.getSession().getAttribute("profesor");
 		profesor = ProfesorDAOImplementation.getInstance().readProfessor(profesor.getEmail());
 		Departamento departamento = profesor.getDepartamento();
-		List<Asignatura> asignaturas_lista = departamento.getAsignaturasDepartamento();
+		Set<Asignatura> asignaturas_lista = departamento.getAsignaturasDepartamento();
 		
 		req.getSession().setAttribute("asignaturas_lista", asignaturas_lista);
 		req.getSession().setAttribute("departamento", departamento);

@@ -2,7 +2,9 @@ package es.upm.dit.isst.web.dao.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,11 +20,11 @@ public class PlanDeEstudio implements Serializable {
 	private String acronimo;
 	private String name;
 	
-	@OneToMany (fetch=FetchType.EAGER,mappedBy="planDeEstudio")
-	private List<Asignatura> asignaturasPlanEstudio;
+	@OneToMany (fetch=FetchType.EAGER,mappedBy="planDeEstudio",cascade= { CascadeType.MERGE, CascadeType.PERSIST})
+	private Set<Asignatura> asignaturasPlanEstudio;
 	
 	public PlanDeEstudio() {
-		this.asignaturasPlanEstudio=new ArrayList<Asignatura>();
+		this.asignaturasPlanEstudio=new HashSet<Asignatura>();
 	}
 
 	public String getAcronimo() {
@@ -41,11 +43,11 @@ public class PlanDeEstudio implements Serializable {
 		this.name = name;
 	}
 
-	public List<Asignatura> getAsignaturasPlanEstudio() {
+	public Set<Asignatura> getAsignaturasPlanEstudio() {
 		return asignaturasPlanEstudio;
 	}
 
-	public void setAsignaturasPlanEstudio(List<Asignatura> asignaturasPlanEstudio) {
+	public void setAsignaturasPlanEstudio(Set<Asignatura> asignaturasPlanEstudio) {
 		this.asignaturasPlanEstudio = asignaturasPlanEstudio;
 	}
 }

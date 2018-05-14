@@ -2,6 +2,7 @@ package es.upm.dit.isst.web.servlets;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +21,16 @@ public class RenderizarMisAsignaturasServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Profesor pro = (Profesor) req.getSession().getAttribute("profesor");
+		System.out.println(pro.toString());
+		//pro = ProfesorDAOImplementation.getInstance().readProfessor("alex");
 		pro = ProfesorDAOImplementation.getInstance().readProfessor(pro.getEmail());
-		List<Asignatura> asig = pro.getAsignaturasImpartidas();
-		
-		System.out.println(ProfesorDAOImplementation.getInstance().readProfessor(pro.getEmail()).getAsignaturasImpartidas());
-		
+//		System.out.println(pro.toString());
+
+		Set<Asignatura> asig = pro.getAsignaturasImpartidas();
+		System.out.println("-------------------------------------------------------");
+		System.out.println(asig);
+		System.out.println("///////////////////////////////////////////////////////////");
+
 		req.getSession().setAttribute("asignaturas_lista", asig);
 		resp.sendRedirect(req.getContextPath() + "/MisAsignaturas.jsp");
 

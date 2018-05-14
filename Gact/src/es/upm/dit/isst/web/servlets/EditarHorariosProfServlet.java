@@ -42,15 +42,10 @@ public class EditarHorariosProfServlet extends HttpServlet{
 		docencia.setHorasB(B);
 		docencia.setHorasC(C);
 		
-		List<Docencia> listaDocencia = profesor.getDocenciasImpartidas();
-		listaDocencia.remove(docencia);
-		listaDocencia.add(docencia);
-		profesor.setDocenciasImpartidas(listaDocencia);
+		profesor.getDocenciasImpartidas().add(docencia);
+
 		
-		List<Docencia> listaDoncenciaAsig =asignatura.getDocencias();
-		listaDoncenciaAsig.remove(docencia);
-		listaDoncenciaAsig.add(docencia);
-		asignatura.setDocencias(listaDoncenciaAsig);
+		asignatura.getDocencias().add(docencia);
 		
 		DocenciaDAOImplementation.getInstance().updateDocencia(docencia);
 		

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.List;
+import java.util.Set;
+
 import es.upm.dit.isst.web.dao.AsignaturaDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
@@ -26,7 +28,7 @@ public class RenderizarEditarAsignaturaServlet extends HttpServlet{
 	req.getSession().setAttribute("asignatura", asignatura);
 	
 	Departamento departamento = asignatura.getDepartamento();
-	List<Profesor> profesoresDepartamento_lista = departamento.getProfesoresDepartamento();
+	Set<Profesor> profesoresDepartamento_lista = departamento.getProfesoresDepartamento();
 	req.getSession().setAttribute("profesoresDepartamento_lista", profesoresDepartamento_lista);
 	
 	resp.sendRedirect(req.getContextPath()+"/EditarAsignatura.jsp");	

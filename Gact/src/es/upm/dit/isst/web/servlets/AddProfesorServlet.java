@@ -37,9 +37,8 @@ public class AddProfesorServlet extends HttpServlet{
 		Profesor profesor = ProfesorDAOImplementation.getInstance().readProfessor(email);
 		Asignatura asignatura= AsignaturaDAOImplementation.getInstance().readAsignatura(id);
 		
-		List<Asignatura> a = profesor.getAsignaturasImpartidas();
-		a.add(asignatura);
-		profesor.setAsignaturasImpartidas(a);
+		 profesor.getAsignaturasImpartidas().add(asignatura);
+	
 		
 //		List<Profesor> b =asignatura.getProfesoresAsignatura();
 //		b.add(profesor);
@@ -59,13 +58,10 @@ public class AddProfesorServlet extends HttpServlet{
 		docencia.setAsignaturaID(asignatura);
 		docencia.setProfesorID(profesor);
 		
-		List<Docencia> listaDocencia = profesor.getDocenciasImpartidas();
-		listaDocencia.add(docencia);
-		profesor.setDocenciasImpartidas(listaDocencia);
+		profesor.getDocenciasImpartidas().add(docencia);
+
 		
-		List<Docencia> listaDoncenciaAsig =asignatura.getDocencias();
-		listaDoncenciaAsig.add(docencia);
-		asignatura.setDocencias(listaDoncenciaAsig);
+		asignatura.getDocencias().add(docencia);
 		
 		DocenciaDAOImplementation.getInstance().createDocencia(docencia);
 		System.out.println("Docencia:");

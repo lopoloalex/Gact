@@ -3,6 +3,7 @@ package es.upm.dit.isst.web.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +30,7 @@ public class RenderizarFormularioAsignatura extends HttpServlet {
 		asignatura = asignaturaDAO.readAsignatura(id);
 		
 		
-		List<Profesor> profesores = asignatura.getProfesoresAsignatura();
+		Set<Profesor> profesores = asignatura.getProfesoresAsignatura();
 		//req.getSession().setAttribute("profesor_list", profesores);
 		
 		List<Docencia> docencia_list= new ArrayList<Docencia>();
@@ -42,10 +43,12 @@ public class RenderizarFormularioAsignatura extends HttpServlet {
 		for(Profesor p :profesores) {
 			String reconoce = gestionar+p.getEmail();
 			docencia = DocenciaDAOImplementation.getInstance().readDocencia(reconoce);
+			if (docencia!=null){
 			docencia_list.add(docencia);
 			horasATotal = horasATotal+docencia.getHorasA();
 			horasBTotal = horasBTotal+docencia.getHorasB();
 			horasCTotal = horasCTotal+docencia.getHorasC();
+			}
 		}
 		
 		System.out.println(docencia_list);
