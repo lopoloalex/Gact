@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.web.dao.AsignaturaDAOImplementation;
+import es.upm.dit.isst.web.dao.PlanDeEstudioDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
+import es.upm.dit.isst.web.dao.model.PlanDeEstudio;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
 @WebServlet("/RenderizarMisAsignaturasServlet")
@@ -30,7 +32,8 @@ public class RenderizarMisAsignaturasServlet extends HttpServlet {
 		System.out.println("-------------------------------------------------------");
 		System.out.println(asig);
 		System.out.println("///////////////////////////////////////////////////////////");
-
+		List<PlanDeEstudio> planes = PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio();
+		req.getSession().setAttribute("planes_lista", planes);
 		req.getSession().setAttribute("asignaturas_lista", asig);
 		resp.sendRedirect(req.getContextPath() + "/MisAsignaturas.jsp");
 

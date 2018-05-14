@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.dit.isst.web.dao.PlanDeEstudioDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 import es.upm.dit.isst.web.dao.model.Asignatura;
 import es.upm.dit.isst.web.dao.model.Departamento;
+import es.upm.dit.isst.web.dao.model.PlanDeEstudio;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
 @WebServlet("/RenderizarAdministrar")
@@ -25,6 +27,9 @@ public class RenderizarAdministrar extends HttpServlet {
 		Departamento departamento = profesor.getDepartamento();
 		Set<Asignatura> asignaturas_lista = departamento.getAsignaturasDepartamento();
 		
+		List<PlanDeEstudio> planes = PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio();
+
+		req.getSession().setAttribute("planes_lista", planes);
 		req.getSession().setAttribute("asignaturas_lista", asignaturas_lista);
 		req.getSession().setAttribute("departamento", departamento);
 		

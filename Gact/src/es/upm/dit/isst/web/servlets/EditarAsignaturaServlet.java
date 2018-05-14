@@ -42,6 +42,7 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		PlanDeEstudio plan = PlanDeEstudioDAOImplementation.getInstance().readPlanDeEstudio(titulacion);
 
 		String coordinadorEmail = req.getParameter("Coordinador");
+		Profesor coordinador = ProfesorDAOImplementation.getInstance().readProfessor(coordinadorEmail);
 		
 		String nGruposS = req.getParameter("Ngrupos");
 		int nGrupos = Integer.parseInt(nGruposS);
@@ -71,7 +72,7 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		asignatura.setnGrupos(nGrupos);
 		asignatura.setSemestre(semestre);
 		asignatura.setPlanDeEstudio(plan);
-
+		coordinador.getAsignaturasImpartidas().add(asignatura);
 		
 		
 		AsignaturaDAOImplementation.getInstance().updateAsignatura(asignatura);

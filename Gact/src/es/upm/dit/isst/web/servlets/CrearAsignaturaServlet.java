@@ -89,7 +89,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		 coordinador.getDocenciasImpartidas().add(docencia);
 		
 //		//Añadimos la nueva docencia a la nueva Asignatura
-		 asignatura.getDocencias().add(docencia);
+//		 asignatura.getDocencias().add(docencia);
 		
 ////		Añadimos el Coordinador a la lista de profesores de la asignatura 
 //		List<Profesor> asignaturaProfes = asignatura.getProfesoresAsignatura();
@@ -117,7 +117,8 @@ public class CrearAsignaturaServlet extends HttpServlet{
 
 
 
-		
+		List<PlanDeEstudio> planes = PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio();
+		req.getSession().setAttribute("planes_lista", planes);
 		req.getSession().setAttribute("asignaturas_lista", DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoID).getAsignaturasDepartamento());
 		
 		

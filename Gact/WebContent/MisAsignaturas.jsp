@@ -5,14 +5,11 @@
 		<div class="my-auto">
 			<h2 class="mb-0">Mis asignaturas</h2>
 			 <div class="panel panel-info">
-	               <div class="title-grade">Grado en ingeniería de
-	               servicios y sistemas de Telecomunicación </div>
-	               <c:if test="${asignaturas_lista.isEmpty()}">
-				       <div class="list-group-item">
-			                  <label>No existen asignaturas de Grado</label>
-			           </div>
-			      </c:if>
-	               <c:forEach items="${asignaturas_lista}" var="asignaturas">
+    <c:forEach items ="${planes_lista}" var="plan">
+     <div class="title-grade"><c:out value="${plan.name}"></c:out> </div>
+      <c:forEach items="${asignaturas_lista}" var="asignaturas">
+      
+       			<c:if test="${plan.acronimo==asignaturas.getPlanDeEstudio().acronimo }">
 	               		<div class="list-group-item">
 	               			<a href="#" style="display: inline-block;"><span>${asignaturas.name}</span></a>
 	                        <div class="subject-options">
@@ -25,15 +22,14 @@
 								</c:if>
 	                        </div>
 	               		</div>
-	               </c:forEach>
+	                </c:if>
+	               	
+	              </c:forEach>
+	           </c:forEach>
+	           
 	         </div>
 	      </div>
-	      <div class="panel panel-info">
-	            <div class="title-grade"> Master en ingenieria de telecomunicacion</div>
-	            <div class="list-group-item">
-	                  <label>No existen asignaturas de máster</label>
-	            </div>
-	      </div>
+	     
 	</section>
 </div>
 <%@ include file="inc/footer.jsp"%>
