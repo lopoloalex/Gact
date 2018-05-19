@@ -34,6 +34,8 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		String titulacion = req.getParameter("Titulacion");
 		String nGruposS = req.getParameter("Ngrupos");
 		int nGrupos = Integer.parseInt(nGruposS);
+		String cursoS = req.getParameter("Curso");
+		int curso = Integer.parseInt(cursoS);
 		String semestreS = req.getParameter("Semestre");
 		int semestre = Integer.parseInt(semestreS);
 		String creditosS = req.getParameter("Creditos");
@@ -66,6 +68,7 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		nuevaAsignatura.setHorasTotalesB(horasTotalesB);
 		nuevaAsignatura.setHorasTotalesC(horasTotalesC);
 		nuevaAsignatura.setnGrupos(nGrupos);
+		nuevaAsignatura.setCurso(curso);
 		nuevaAsignatura.setSemestre(semestre);
 		nuevaAsignatura.setPlanDeEstudio(plan);
 		AsignaturaDAOImplementation.getInstance().createAsignatura(nuevaAsignatura);
@@ -81,41 +84,19 @@ public class CrearAsignaturaServlet extends HttpServlet{
 		docencia.setAsignaturaID(AsignaturaDAOImplementation.getInstance().readAsignatura(asignaturaID));
 		DocenciaDAOImplementation.getInstance().createDocencia(docencia);
 		docencia = DocenciaDAOImplementation.getInstance().readDocencia(docencia.getDocencia());
-
-
-		//FALTA CREAR PLAN DE ESTUDIO
 		
 		//Añadimos la nueva docencia al coordinador
 		 coordinador.getDocenciasImpartidas().add(docencia);
 		
-//		//Añadimos la nueva docencia a la nueva Asignatura
+		//Añadimos la nueva docencia a la nueva Asignatura
 		 asignatura.getDocencias().add(docencia);
-		
-////		Añadimos el Coordinador a la lista de profesores de la asignatura 
-//		List<Profesor> asignaturaProfes = asignatura.getProfesoresAsignatura();
-//		asignaturaProfes.add(coordinador);
-//		asignatura.setProfesoresAsignatura(asignaturaProfes);
 		
 		//Guardamos la Asignatura en la lista de asignaturas de el Coordinador.
 		coordinador.getAsignaturasImpartidas().add(asignatura);
-	
-//		//Guardamos la asignatura en la lista de asignaturas del Departamento
-//		List<Asignatura> asignaturasDepartamento = departamento.getAsignaturasDepartamento();
-//		asignaturasDepartamento.add(asignatura);
-//		departamento.setAsignaturasDepartamento(asignaturasDepartamento);
-		
-		
-		
+
 		//creamos la nueva docencia asignatura y hacemos un update de el coodinador y el departamento
-		
 		DocenciaDAOImplementation.getInstance().updateDocencia(docencia);
-//		AsignaturaDAOImplementation.getInstance().updateAsignatura(asignatura);
 		ProfesorDAOImplementation.getInstance().updateProfessor(coordinador);
-//		DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
-
-
-
-
 
 		List<PlanDeEstudio> planes = PlanDeEstudioDAOImplementation.getInstance().readAllPlanDeEstudio();
 		req.getSession().setAttribute("planes_lista", planes);

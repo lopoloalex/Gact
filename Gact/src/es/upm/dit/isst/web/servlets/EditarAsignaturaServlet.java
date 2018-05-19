@@ -48,6 +48,9 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		
 		String nGruposS = req.getParameter("Ngrupos");
 		int nGrupos = Integer.parseInt(nGruposS);
+		
+		String cursoS = req.getParameter("Curso");
+		int curso = Integer.parseInt(cursoS);
 
 		String semestreS = req.getParameter("Semestre");
 		int semestre = Integer.parseInt(semestreS);
@@ -72,6 +75,7 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		asignatura.setHorasTotalesB(horasTotalesB);
 		asignatura.setHorasTotalesC(horasTotalesC);
 		asignatura.setnGrupos(nGrupos);
+		asignatura.setCurso(curso);
 		asignatura.setSemestre(semestre);
 		asignatura.setPlanDeEstudio(plan);
 		if(asignatura.getProfesoresAsignatura().contains(coordinador)) {

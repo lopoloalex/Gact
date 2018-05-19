@@ -42,6 +42,12 @@
             <input type="number" name="Ngrupos" class="form-control"  placeholder="Número de grupos de teoría" value="${asignatura.nGrupos}">
          </div>
       </div>
+      <div class="form-group">
+         <label  class="col-lg-2 control-label">Curso</label>
+         <div class="col-lg-10">
+            <input type="number" name="Curso" class="form-control"  placeholder="Curso" value="${asignatura.curso}">
+         </div>
+      </div>
       </div>
       <div class="form-group">
          <label  class="col-lg-2 control-label">Semestre</label>

@@ -19,6 +19,7 @@ public class Asignatura implements Serializable {
 	private String acronimo;
 	private int nGrupos;
 	private int semestre;
+	private int curso;
 	private double creditos;
 	private String coordinadorEmail;
 	@ManyToOne
@@ -127,6 +128,14 @@ public class Asignatura implements Serializable {
 
 	public void setPlanDeEstudio(PlanDeEstudio planDeEstudio) {
 		this.planDeEstudio = planDeEstudio;
+	}
+
+	public int getCurso() {
+		return curso;
+	}
+
+	public void setCurso(int curso) {
+		this.curso = curso;
 	}
 	
 	
