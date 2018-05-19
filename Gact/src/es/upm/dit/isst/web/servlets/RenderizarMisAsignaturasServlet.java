@@ -23,8 +23,6 @@ public class RenderizarMisAsignaturasServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Profesor pro = (Profesor) req.getSession().getAttribute("profesor");
-		System.out.println(pro.toString());
-		//pro = ProfesorDAOImplementation.getInstance().readProfessor("alex");
 		pro = ProfesorDAOImplementation.getInstance().readProfessor(pro.getEmail());
 //		System.out.println(pro.toString());
 

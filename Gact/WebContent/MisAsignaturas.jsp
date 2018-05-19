@@ -13,6 +13,11 @@
 	               		<div class="list-group-item">
 	               			<a href="#" style="display: inline-block;"><span>${asignaturas.name}</span></a>
 	                        <div class="subject-options">
+	                        	<form action="RenderizarVerMisHorasServlet">	
+									<input type="hidden" class="btn btn-info pull-right"
+										name="asignaturaVer" value="${asignaturas.asignaturaID}" >
+									<button class ="btn btn-info pull-right" type="submit">Ver</button>
+								</form>
 	                        	<c:if test="${asignaturas.coordinadorEmail == sessionScope.profesor.getEmail()}">	
 									<form action="RenderizarFormularioAsignatura">	
 										<input type="hidden" class="btn btn-info pull-right"
