@@ -5,6 +5,10 @@
       <div class="my-auto">
          <h2 class="mb-0">
             Administrar Secretaría
+            <button type="button" class="btn btn-info pull-right"
+               id="login-button"
+               onClick="window.location.href='JsonClassForUPM'">Importar asignaturas
+            </button>
         </h2>
   	<div class="panel panel-info">
          <h3>Asignaturas a las que falta editar campos</h3>

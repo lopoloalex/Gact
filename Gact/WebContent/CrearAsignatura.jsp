@@ -9,7 +9,7 @@
       <div class="form-group">
          <label  class="col-md-4 control-label">Plan de estudio</label>
          <div class="col-md-8">
-	      	 <select class="form-control" name="Titulacion">
+	      	 <select  class="form-control" name="Titulacion">
 	           	<c:forEach items="${planes_lista}" var="plan">
 	             	 <option value="${plan.acronimo}">${plan.name}</option>
 	         	</c:forEach>
