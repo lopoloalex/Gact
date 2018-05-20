@@ -24,8 +24,8 @@ import es.upm.dit.isst.web.dao.model.Docencia;
 import es.upm.dit.isst.web.dao.model.PlanDeEstudio;
 import es.upm.dit.isst.web.dao.model.Profesor;
 
-@WebServlet("/EditarAsignaturaServlet")
-public class  EditarAsignaturaServlet extends HttpServlet{
+@WebServlet("/EditarRootAsignaturaServlet")
+public class  EditarRootAsignaturaServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException { 
 		
@@ -51,6 +51,10 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		
 		String cursoS = req.getParameter("Curso");
 		int curso = Integer.parseInt(cursoS);
+		
+		String departamentoS = req.getParameter("Departamento");
+		int departamentoId = Integer.parseInt(departamentoS);
+
 
 		String semestreS = req.getParameter("Semestre");
 		int semestre = Integer.parseInt(semestreS);
@@ -78,6 +82,8 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		asignatura.setCurso(curso);
 		asignatura.setSemestre(semestre);
 		asignatura.setPlanDeEstudio(plan);
+		asignatura.setDepartamento(DepartamentoDAOImplementation.getInstance().readDepartamento(departamentoId));
+		
 		if(asignatura.getProfesoresAsignatura().contains(coordinador)) {
 			
 		} else {
@@ -101,10 +107,10 @@ public class  EditarAsignaturaServlet extends HttpServlet{
 		
 		AsignaturaDAOImplementation.getInstance().updateAsignatura(asignatura);
 		
-		req.getSession().setAttribute("asignaturas_lista", asignatura.getDepartamento().getAsignaturasDepartamento());
+		req.getSession().setAttribute("asignaturas_lista", AsignaturaDAOImplementation.getInstance().readAllAsignatura());
 		
 
-		resp.sendRedirect(req.getContextPath()+"/Administrar.jsp");	
+		resp.sendRedirect(req.getContextPath()+"/RootAdministrar.jsp");	
 		
 		
 		
