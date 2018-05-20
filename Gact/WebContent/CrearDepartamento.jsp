@@ -27,7 +27,12 @@
 					<td>${departamentoi.departamentoID}</td>
 					<td>${departamentoi.nombre}</td>
 					<td>${departamentoi.responsableEmail}</td>
-
+					<td>
+					<form action ="RenderizarEditarDepartamentoServlet" method ="get">
+								<input type="hidden" name="departamento" value="${departamentoi.departamentoID}" >																	
+              					<button type="submit"> Editar</button>
+              		</form>
+					</td>
 				</tr>
 
 			</c:forEach>
