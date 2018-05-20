@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.upm.dit.isst.web.dao.DepartamentoDAOImplementation;
 import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 
 @WebServlet("/RenderizarCrearProfesorServlet")
@@ -15,6 +16,7 @@ public class RenderizarCrearProfesorServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		req.getSession().setAttribute("departamento_list", DepartamentoDAOImplementation.getInstance().readAllDepartamentos());
 		req.getSession().setAttribute("profesor_list", ProfesorDAOImplementation.getInstance().readAllProfessor());
 		resp.sendRedirect(req.getContextPath() + "/CrearProfesor.jsp");
 		

@@ -14,7 +14,7 @@
          <h3>Asignaturas a las que falta editar campos</h3>
          <c:forEach items="${asignaturas_lista}" var="asignaturas">
          
-                <c:if test="${empty asignaturas.getDepartamento()}">
+                <c:if test="${asignaturas.getDepartamento().getDepartamentoID() == 0}">
                		<div class="list-group-item">
                			<a href="#" style="display: inline-block;"><label for="checkbox" >${asignaturas.name}</label></a>
                         <div class="subject-options">
@@ -36,7 +36,7 @@
             <h3>Asignaturas ya editadas</h3>
        
        <c:forEach items="${asignaturas_lista}" var="asignaturas">
-       	  <c:if test="${not empty asignaturas.getDepartamento()}">
+       	  <c:if test="${asignaturas.getDepartamento().getDepartamentoID() != 0}">
        	
                		<div class="list-group-item">
                			<a href="#" style="display: inline-block;"><label for="checkbox">${asignaturas.name}</label></a>

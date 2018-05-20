@@ -8,7 +8,11 @@
 		</div>
 
 		<form action="CrearProfesorServlet">
-			<input type="text" name="departamentoID" placeholder="DepartamentoID">
+			<select name="departamentoID">
+	           	<c:forEach items="${departamento_list}" var="departamento">
+	             	 <option value="${departamento.departamentoID}">${departamento.nombre}</option>
+	         	</c:forEach>
+	        </select>
 			<input type="text" name="name" placeholder="Nombre"> <input
 				type="text" name="email" placeholder="Email"> <input
 				type="password" name="password" placeholder="Password">
