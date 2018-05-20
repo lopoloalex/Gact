@@ -26,6 +26,8 @@ public class EmailHandler {
 	public EmailHandler() {
 		String host="localhost";
 		props.put("mail.smtp.host",host);
+		props.put("mail.smtp.port",2525);
+
 	}
 
 	public void sendEmail(String from, String to, String subject, String body) {

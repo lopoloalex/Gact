@@ -41,12 +41,17 @@ public class BorrarAsignaturaServlet extends HttpServlet{
 //			DocenciaDAOImplementation.getInstance().deleteDocencia(docencia);
 //		}
 		
+		for (Profesor profesor : aborrar.getProfesoresAsignatura()) {
+			profesor.getAsignaturasImpartidas().remove(aborrar);
+			ProfesorDAOImplementation.getInstance().updateProfessor(profesor);
+		}
+		
 		
 //		//Borramos todas las docencias impartidas en esa asignatura
-//		Set<Docencia> docenciasaBorrar = aborrar.getDocencias();
-//		for(Docencia docencia: docenciasaBorrar) {
-//			DocenciaDAOImplementation.getInstance().deleteDocencia(docencia);
-//		}
+		Set<Docencia> docenciasaBorrar = aborrar.getDocencias();
+		for(Docencia docencia: docenciasaBorrar) {
+			DocenciaDAOImplementation.getInstance().deleteDocencia(docencia);
+		}
 //		
 		//FALTA  BORRAR ASIGNATURA EN LA LISTA DE PLAN DE ESTUDIO
 		
@@ -54,7 +59,7 @@ public class BorrarAsignaturaServlet extends HttpServlet{
 		//DepartamentoDAOImplementation.getInstance().updateDepartamento(departamento);
 
 		
-		req.getSession().setAttribute("asignaturas_lista", departamento.getAsignaturasDepartamento() );
+		req.getSession().setAttribute("asignaturas_lista", DepartamentoDAOImplementation.getInstance().readDepartamento(departamento.getDepartamentoID()).getAsignaturasDepartamento() );
 		
 
 		resp.sendRedirect(req.getContextPath()+"/Administrar.jsp");	

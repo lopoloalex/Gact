@@ -18,13 +18,14 @@ public class ReclamarServlet extends HttpServlet{
 		String emailCoordinador = req.getParameter("coordinador");
 		String asignatura = req.getParameter("asignaturaP");
 						
-		String motivo = "Reclamación horarios " + asignatura;
-		String mensaje = "Hay un problemas con mis horarios de la asignatura " + asignatura;
-		
-		//EmailHandler.getInstance().sendEmail(emailProfesor, emailCoordinador,motivo, mensaje);
-		
+		String motivo = "Reclamacion horarios " + asignatura;
+		String mensaje = "Hay un problema con mis horarios de la asignatura " + asignatura;
+			
 		EmailHandler email = new EmailHandler();
 		email.sendEmail(emailProfesor, emailCoordinador,motivo, mensaje);
+		
+		resp.sendRedirect(req.getContextPath()+"/VerMisHoras.jsp");
+
 		
 	}
 

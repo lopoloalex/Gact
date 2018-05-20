@@ -8,7 +8,8 @@
 				<c:if test="${sessionScope.vista_estadisticas}">
 					<a class="btn btn-info btn-volver" href="RenderizarEstadisticasDepartamento">Volver</a>
 				</c:if>
-				<c:if test="${sessionScope.isCoordinador && asignatura.coordinadorEmail == sessionScope.profesor.email}">
+			
+				<c:if test="${asignatura.coordinadorEmail == sessionScope.profesor.getEmail()}">
 					<form id="btn-addProfe" action="RenderizarAddProfesorServlet">								
 						<input type="hidden" class="btn btn-info pull-right" name="asignatura" value="${asignatura.asignaturaID}">
 						<button type="submit" class ="btn btn-info pull-right"> Añadir Profesor	 </button>
@@ -36,7 +37,7 @@
 						<td>${docenciai.getHorasB()}</td>
 						<td>${docenciai.getHorasC()}</td>
 						<td>
-						<c:if test="${sessionScope.isCoordinador && asignatura.coordinadorEmail == sessionScope.profesor.email}">
+						<c:if test="${asignatura.coordinadorEmail == sessionScope.profesor.email}">
 							<form action="RenderizarEditarHorariosProfServlet">
 								<input type="hidden" name="docenciaID" value="${docenciai.getDocencia()}" >
 								<input type="submit" class="btn btn-success" value="Editar">
