@@ -17,12 +17,12 @@ import javax.persistence.OneToMany;
 public class Departamento implements Serializable {
 
 	@Id
-	private int departamentoID;
+	private int departamentoID; 
 	private String nombre;
 	private String responsableEmail;
 	@OneToMany(mappedBy="departamento",fetch=FetchType.EAGER ,cascade={ CascadeType.MERGE, CascadeType.PERSIST} )
 	private Set<Profesor> profesoresDepartamento;
-	
+	  
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="departamentoA",cascade={ CascadeType.MERGE, CascadeType.PERSIST}) 
 	private Set<Asignatura> asignaturasDepartamento;
 	

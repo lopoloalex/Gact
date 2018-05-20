@@ -51,7 +51,11 @@ public class RenderizarFormularioAsignatura extends HttpServlet {
 			}
 		}
 		
-		System.out.println(docencia_list);
+		if(req.getHeader("referer").contains("estadisticasDepartamento")) {
+			req.getSession().setAttribute("vista_estadisticas", true);
+		} else {
+			req.getSession().setAttribute("vista_estadisticas", false);
+		}
 		
 		req.getSession().setAttribute("docencia_list", docencia_list);
 		req.getSession().setAttribute("horasA", horasATotal);

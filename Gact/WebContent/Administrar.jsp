@@ -18,7 +18,7 @@
        <c:forEach items="${asignaturas_lista}" var="asignaturas">
        			<c:if test="${plan.acronimo==asignaturas.getPlanDeEstudio().acronimo }">
                		<div class="list-group-item">
-               			<a href="#" style="display: inline-block;"><label for="checkbox" name="nombre">${asignaturas.name}</label></a>
+               			<a href="#" style="display: inline-block;"><span>${asignaturas.name}</span></a>
                         <div class="subject-options">
                         	<form action="BorrarAsignaturaServlet">					
 	                           <input type="hidden" class="btn btn-info pull-right" name="asignaturaABorrar" value="${asignaturas.asignaturaID}" placeholder="Borrar">

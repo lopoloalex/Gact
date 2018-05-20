@@ -2,7 +2,7 @@
   <a class="navbar-brand js-scroll-trigger" href="#page-top">
     <span class="d-block d-lg-none"> </span>
     <span class="d-none d-lg-block">
-      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="imagenes/donald.jpg" alt="">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="images/upm.jpg" alt="">
     </span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +24,9 @@
       <c:if test="${sessionScope.isResponsable}">
       	  <li class="nav-item">
 	        <a class="nav-link js-scroll-trigger" href="RenderizarAdministrar">Administrar</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link js-scroll-trigger" href="RenderizarEstadisticasDepartamento">Departamento</a>
 	      </li>
 	  </c:if>
       <c:if test="${sessionScope.isResponsable || sessionScope.adminLogged}">

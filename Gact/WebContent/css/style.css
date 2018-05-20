@@ -150,3 +150,88 @@ div.panel-info div.title-grade {
   -webkit-animation-duration: 1s;
   -webkit-animation-delay: 1s;
 }
+
+.page-subtitle {
+	font-size: 1.8em;
+}
+
+/* Página de estadisticas de asignatura */
+.buttons {
+	margin-bottom: 30px;
+}
+.buttons #btn-addProfe {
+	display: inline-block;
+}
+.buttons .btn-volver {
+	float: left;
+    background: #a7a4a4;
+    color: #fff !important;
+    margin-right: 10px;
+    border: 1px solid #a7a4a4;
+}
+div.panel.panel-info .list-group-item {
+	min-height: 64px;
+}
+div.panel.panel-info .list-group-item a {
+	padding: 7px 10px;
+}
+
+/* Listas de estadisticas */
+div.stats-control {
+	background: #f5f5f5;
+    min-height: 50px;
+    margin-bottom: 30px;
+}
+div.stats-control div.stats-types {
+	padding: 20px 10px;
+}
+ul.stats-types-list {
+	list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul.stats-types-list li.stats-type {
+	display: inline-block;
+	padding: 10px;
+}
+ul.stats-types-list li.stats-type a.stats-type-element {
+	color: #034a94;
+}
+ul.stats-types-list li.stats-type a.stats-type-element:hover {
+	color: #000;
+	text-decoration: unset;
+}
+table#tabla-profesores td, 
+table#tabla-asignaturas tr td {
+	vertical-align: middle;
+}
+
+/* Perfil de Profesor */
+h3.asignaturas {
+	border-bottom: 1px solid #333;
+	margin-bottom: 25px;
+}
+table#docencia-profesor {
+	width: 100%;
+}
+table#docencia-profesor thead {
+	border-bottom: 1px solid #cccccc;
+}
+table#docencia-profesor tbody tr {
+	line-height: 2.7;
+}
+div#informacion-profesor {
+	margin-bottom: 35px;
+}
+div#informacion-profesor .panel {
+	background: #f5f5f5;
+	padding: 20px 0;
+}
+div#informacion-profesor ul.profesor-data {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+div#informacion-profesor ul.profesor-data li b {
+	font-weight: bold;
+}
