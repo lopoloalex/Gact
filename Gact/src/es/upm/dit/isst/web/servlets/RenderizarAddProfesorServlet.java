@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.web.dao.AsignaturaDAOImplementation;
+import es.upm.dit.isst.web.dao.ProfesorDAOImplementation;
 
 
 @WebServlet("/RenderizarAddProfesorServlet")
@@ -22,6 +23,8 @@ public class RenderizarAddProfesorServlet extends HttpServlet {
 		
 		
 		req.getSession().setAttribute("asignatura", AsignaturaDAOImplementation.getInstance().readAsignatura(id));
+		req.getSession().setAttribute("profesores", ProfesorDAOImplementation.getInstance().readAllProfessor());
+
 		resp.sendRedirect(req.getContextPath()+"/AddProfesor.jsp");	
 
 		

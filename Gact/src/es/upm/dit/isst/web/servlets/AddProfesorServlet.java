@@ -69,6 +69,8 @@ public class AddProfesorServlet extends HttpServlet{
 		
 		req.getSession().setAttribute("asignatura", asignatura);
 		req.getSession().setAttribute("asignaturaAGestionar", asignatura);
+		req.getSession().setAttribute("profesores",  ProfesorDAOImplementation.getInstance().readAllProfessor());
+
 
 
 		resp.sendRedirect(req.getContextPath()+"/AddProfesor.jsp");	

@@ -9,10 +9,11 @@
 
          <div class="form-group">
             <label class="col-lg-2 control-label">Email</label>
-            <div class="col-lg-10">
-               <input type="text" name="email" class="form-control"
-                  placeholder="email de profesor">
-            </div>
+   			 <select class="form-control" name="email">
+	           	<c:forEach items="${profesores}" var="profesor">
+	             	 <option value="${profesor.email}">${profesor.name}</option>
+	         	</c:forEach>
+	         </select>
          </div>
          <div class="form-group">
          
